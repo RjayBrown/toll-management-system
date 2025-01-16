@@ -1,0 +1,30 @@
+button {
+	transition: all 0.15s ease-in;
+
+	&.search {
+		&__top {
+			margin-left: -6px;
+		}
+	}
+
+	&.login {
+		padding: 0.25rem 0.5rem;
+		margin: 1rem auto;
+		background-color: var(--primary-light);
+		color: var(--primary-dark);
+
+		width: 10rem;
+		border-radius: 30px;
+		border: none;
+		box-shadow: 1px 1px 5px 5px var(--primary-dark);
+
+		&:hover {
+			background-color: var(--accent2);
+			color: var(--primary-light);
+		}
+
+		&:active {
+			transform: scale(0.975);
+		}
+	}
+}
