@@ -1,4 +1,5 @@
 import React from "react";
+import LoginButton from "../Buttons/LoginButton";
 
 const LoginForm = () => {
 	return (
@@ -13,7 +14,7 @@ const LoginForm = () => {
 					<span>Password</span>
 					<input type="password" name="password" />
 				</label>
-				<button className="login">Login</button>
+				<LoginButton />
 			</form>
 		</>
 	);

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Global/Header";
 import LoginPage from "./pages/LoginPage";
+import Dashboard from "./pages/Dashboard";
 import Loading from "./pages/Loading";
 
 function App() {
 	return (
 		<section id="app">
 			<Header />
-			<LoginPage />
-			<Footer />
+			{/* <LoginPage /> */}
+			<Dashboard />
 		</section>
 	);
 }
