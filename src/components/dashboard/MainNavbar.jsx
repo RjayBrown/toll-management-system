@@ -4,11 +4,10 @@ const MainNavbar = () => {
 	return (
 		<>
 			<nav className="nav__primary">
-				<a href="">Home</a>
 				<a href="" className="pressed">
-					Accounts
+					Home
 				</a>
-				<a href="">Violations</a>
+				<a href="">Accounts</a>
 				<a href="">Service Requests</a>
 				<a href="">Admin Panel</a>
 			</nav>

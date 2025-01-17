@@ -10,6 +10,7 @@ const Header = () => {
 				<SiToll className="logo" />
 				<div className="flex__row header__right">
 					<TbMessageReportFilled />
+					<span>2</span>
 					<form className="form__header">
 						<label>
 							<input type="text" placeholder="Search" />

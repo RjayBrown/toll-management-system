@@ -6,12 +6,17 @@ form {
 		margin: 0.5rem auto;
 	}
 
-	& input[disabled] {
-		background-color: var(--accent);
-		border: 1px solid grey;
-		padding: 3px;
-		border-radius: 2px;
-		color: black;
+	& input {
+		&:focus {
+			border: 1px solid var(--accent);
+		}
+		&[disabled] {
+			background-color: var(--accent);
+			border: 1px solid grey;
+			padding: 3px;
+			border-radius: 2px;
+			color: black;
+		}
 	}
 
 	& caption {
