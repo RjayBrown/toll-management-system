@@ -1,0 +1,66 @@
+.nav {
+	&__primary {
+		display: inline-block;
+		margin: 0.25rem 0;
+		transition: all 0.15s ease-in;
+		border-bottom: 1px solid var(--accent);
+
+		& a {
+			background-color: var(--accent2);
+			color: var(--primary-light);
+			margin: 1px 0.125rem 0 0;
+			padding: 0.2rem 1rem;
+
+			&:hover {
+				background-color: var(--primary-light);
+				color: var(--accent2);
+			}
+
+			&.pressed {
+				background-color: var(--primary-light);
+				color: var(--accent2);
+				font-weight: bold;
+
+				&:hover {
+					cursor: default;
+					background-color: var(--primary-light);
+					color: var(--accent2);
+				}
+			}
+		}
+	}
+
+	&__secondary {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem 0;
+		justify-content: start;
+
+		border-bottom: 1px solid var(--primary-light);
+		box-shadow: 2px 1px 2px var(--accent);
+
+		& a {
+			padding: 0.25rem 1rem 0;
+
+			font-weight: bold;
+			color: var(--accent2);
+
+			&:hover {
+				background-color: var(--accent2);
+				color: var(--primary-light);
+			}
+
+			&.pressed {
+				padding-bottom: 0;
+				margin-bottom: 0;
+				border-bottom: 3px solid var(--accent2);
+				font-weight: bold;
+
+				&:hover {
+					cursor: default;
+					background-color: var(--primary-light);
+					color: var(--accent2);
+				}
+			}
+		}
+	}
+}

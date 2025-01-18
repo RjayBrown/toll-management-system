@@ -1,6 +1,6 @@
 import React from "react";
 
-const SubMainNavbar = () => {
+const SubNavbar = () => {
 	return (
 		<>
 			<div className="flex__row nav__secondary">
@@ -20,4 +20,4 @@ const SubMainNavbar = () => {
 	);
 };
 
-export default SubMainNavbar;
+export default SubNavbar;

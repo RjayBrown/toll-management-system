@@ -13,7 +13,10 @@
 		font-size: 1.5rem;
 	}
 
-	&__right * {
-		margin: 0 0.25rem;
+	&__right {
+		& svg {
+			cursor: pointer;
+			font-size: 1.25rem;
+		}
 	}
 }

@@ -1,12 +1,39 @@
 button {
 	transition: all 0.15s ease-in;
+	border-radius: 30px;
 
+	// SEARCH BUTTONS
 	&.search {
+		&__top,
+		&__dashboard {
+			&:active {
+				transform: scale(0.975);
+			}
+		}
+
 		&__top {
-			margin-left: -6px;
+			margin-left: 1px;
+			border-radius: 1px;
+			border: 1px solid var(--primary-light);
+
+			&:hover {
+				background-color: var(--accent);
+				border: 1px solid var(--accent);
+			}
+		}
+
+		&__dashboard {
+			background-color: var(--accent2);
+			color: var(--primary-light);
+			border: none;
+
+			&:hover {
+				background-color: var(--accent3);
+			}
 		}
 	}
 
+	// LOGIN BUTTON
 	&.login {
 		padding: 0.25rem 0.5rem;
 		margin: 1rem auto;
@@ -27,71 +54,6 @@ button {
 			transform: scale(0.975);
 		}
 	}
-}
 
-.nav {
-	&__primary {
-		display: inline-block;
-		margin: 0.25rem 0;
-		transition: all 0.15s ease-in;
-		border-bottom: 1px solid var(--accent);
-
-		& a {
-			background-color: var(--accent2);
-			color: var(--primary-light);
-			margin: 1px 0.125rem 0 0;
-			padding: 0.2rem 1rem;
-
-			&:hover {
-				background-color: var(--primary-light);
-				color: var(--accent2);
-			}
-
-			&.pressed {
-				background-color: var(--primary-light);
-				color: var(--accent2);
-				font-weight: bold;
-
-				&:hover {
-					cursor: default;
-					background-color: var(--primary-light);
-					color: var(--accent2);
-				}
-			}
-		}
-	}
-
-	&__secondary {
-		margin: 1rem 0;
-		padding: 0.25rem 1rem 0;
-		justify-content: start;
-
-		border-bottom: 1px solid var(--primary-light);
-		box-shadow: 2px 1px 2px var(--accent);
-
-		& a {
-			padding: 0.25rem 1rem 0;
-
-			font-weight: bold;
-			color: var(--accent2);
-
-			&:hover {
-				background-color: var(--accent2);
-				color: var(--primary-light);
-			}
-
-			&.pressed {
-				padding-bottom: 0;
-				margin-bottom: 0;
-				border-bottom: 3px solid var(--accent2);
-				font-weight: bold;
-
-				&:hover {
-					cursor: default;
-					background-color: var(--primary-light);
-					color: var(--accent2);
-				}
-			}
-		}
-	}
+	// DASHBOARD BUTTONS
 }

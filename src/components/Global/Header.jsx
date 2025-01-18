@@ -10,10 +10,12 @@ const Header = () => {
 				<SiToll className="logo" />
 				<div className="flex__row header__right">
 					<TbMessageReportFilled />
-					<label>
-						<input type="text" placeholder="Search" />
-					</label>
-					<button className="search__top">Go</button>
+					<form className="form__header">
+						<label>
+							<input type="text" placeholder="Search" />
+						</label>
+						<button className="search__top">Go</button>
+					</form>
 					<FaUser />
 				</div>
 			</header>

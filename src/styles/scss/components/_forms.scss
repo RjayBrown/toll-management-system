@@ -1,24 +1,64 @@
-.login {
-	height: auto;
-}
+@use "../utils/mixins" as u;
 
-.form {
-	margin: 5rem auto;
-	padding: 2.5rem 6.25rem;
+form {
+	& span {
+		display: inline-block;
+		margin: 0.5rem auto;
+	}
 
-	background-color: var(--secondary);
-	color: var(--primary-light);
-
-	border-radius: 1rem;
-	box-shadow: 1px 1px 10px 3px var(--accent);
+	& input[disabled] {
+		background-color: var(--accent);
+		border: 1px solid grey;
+		padding: 3px;
+		border-radius: 2px;
+		color: black;
+	}
 
 	& caption {
 		margin-bottom: 2.5rem;
 	}
 
-	& span {
-		display: inline-block;
-		width: 5rem;
-		margin: 0.5rem auto;
+	&.form {
+		&__login {
+			margin: 5rem auto;
+			padding: 2.5rem 6.25rem;
+
+			background-color: var(--secondary);
+			color: var(--primary-light);
+
+			border-radius: 1rem;
+			box-shadow: 1px 1px 10px 3px var(--accent);
+
+			& span {
+				width: 5rem;
+			}
+		}
+
+		&__header {
+			margin: 0 1.25rem;
+		}
+
+		&__search {
+			width: 40%;
+			padding: 1rem;
+			box-shadow: 1px 1px 1px 1px var(--accent);
+
+			& caption {
+				align-self: flex-start;
+				font-weight: bold;
+			}
+
+			& span {
+				width: 10rem;
+				font-size: 0.75rem;
+				text-align: end;
+				margin-right: 1rem;
+				font-weight: bold;
+			}
+
+			@include u.breakpoint-min(xl) {
+				width: 30%;
+			}
+		}
 	}
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import Header from "./components/Global/Header";
+import Header from "./components/global/Header";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import Loading from "./pages/Loading";

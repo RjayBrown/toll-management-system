@@ -10,6 +10,7 @@ const MainNavbar = () => {
 				</a>
 				<a href="">Violations</a>
 				<a href="">Service Requests</a>
+				<a href="">Admin Panel</a>
 			</nav>
 		</>
 	);
