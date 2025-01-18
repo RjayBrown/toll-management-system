@@ -1,15 +1,14 @@
 .nav {
 	&__primary {
 		display: inline-block;
-		margin: 0.25rem 0;
-		transition: all 0.15s ease-in;
+		margin: 0.35rem 0;
 		border-bottom: 1px solid var(--accent);
 
 		& a {
 			background-color: var(--accent2);
 			color: var(--primary-light);
-			margin: 1px 0.125rem 0 0;
-			padding: 0.2rem 1rem;
+			margin: 0 1px 0 0;
+			padding: 0.5rem 1rem;
 
 			&:hover {
 				background-color: var(--primary-light);

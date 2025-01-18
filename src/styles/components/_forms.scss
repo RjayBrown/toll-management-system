@@ -7,9 +7,6 @@ form {
 	}
 
 	& input {
-		&:focus {
-			border: 1px solid var(--accent);
-		}
 		&[disabled] {
 			background-color: var(--accent);
 			border: 1px solid grey;

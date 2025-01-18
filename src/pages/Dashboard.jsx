@@ -1,14 +1,13 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+
 import MainNavbar from "../components/dashboard/MainNavbar";
-import SubNavbar from "../components/dashboard/SubNavbar";
-import AccountSearchForm from "../components/Forms/AccountSearchForm";
 
 const Dashboard = () => {
 	return (
 		<>
 			<MainNavbar />
-			<SubNavbar />
-			<AccountSearchForm />
+			<Outlet />
 		</>
 	);
 };

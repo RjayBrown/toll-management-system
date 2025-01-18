@@ -1,17 +1,13 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const MainNavbar = () => {
 	return (
-		<>
-			<nav className="nav__primary">
-				<a href="" className="pressed">
-					Home
-				</a>
-				<a href="">Accounts</a>
-				<a href="">Service Requests</a>
-				<a href="">Admin Panel</a>
-			</nav>
-		</>
+		<nav className="nav__primary">
+			<Link to="/dashboard">Home</Link>
+			<Link to="/dashboard/accounts">Accounts</Link>
+			<Link to="/dashboard/admin">Admin Panel</Link>
+		</nav>
 	);
 };
 
