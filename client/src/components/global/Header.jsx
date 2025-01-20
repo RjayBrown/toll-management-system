@@ -8,7 +8,7 @@ import { TbMessageReportFilled } from "react-icons/tb";
 const Header = () => {
 	return (
 		<header className="flex__row header">
-			<Link to="/dashboard">
+			<Link to="/">
 				<SiToll className="logo" />
 			</Link>
 			<div className="flex__row header__right">
@@ -20,7 +20,9 @@ const Header = () => {
 					</label>
 					<button className="search__top">Go</button>
 				</form>
-				<FaUser />
+				<Link to="/dashboard">
+					<FaUser />
+				</Link>
 			</div>
 		</header>
 	);

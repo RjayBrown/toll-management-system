@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from "react";
 
-const SubNavbar = () => {
+const AdminNavbar = () => {
 	return (
-		<div className="flex__row nav__secondary">
+		<nav className="flex__row nav__secondary">
 			<Link to="" className="pressed">
 				Accounts Home
 			</Link>
@@ -15,8 +14,8 @@ const SubNavbar = () => {
 			<Link to="">Invoices</Link>
 			<Link to="">Violation</Link>
 			<Link to="">History</Link>
-		</div>
+		</nav>
 	);
 };
 
-export default SubNavbar;
+export default AdminNavbar;

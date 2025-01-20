@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import Header from "../components/global/Header";
 
-const HomePage = () => {
+const MainLayout = () => {
 	return (
 		<>
 			<Header />
@@ -12,4 +12,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default MainLayout;
