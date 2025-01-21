@@ -1,23 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-/* GLOBAL LAYOUT */
+/* LAYOUTS */
 import MainLayout from "./layouts/MainLayout";
+import MainDashboardLayout from "./layouts/MainDashboardLayout";
+import EmployeeDashboard from "./layouts/EmployeeDashboard";
+import AdminDashboard from "./layouts/AdminDashboard";
 
-/* LAYOUTS (LEVEL 2) */
-import AccountDashboardLayout from "./layouts/AccountDashboardLayout";
-import AdminDashboardLayout from "./layouts/AdminDashboardLayout";
-
-/* LAYOUTS (LEVEL 3) */
-
-/* LOGIN PAGE */
+/* PAGES (MAIN) */
 import LoginPage from "./pages/LoginPage";
+import DashboardHome from "./pages/DashboardHome";
+import AccountSearchResults from "./pages/AccountSearchResults";
 
 /* PAGES (ACCOUNT DASHBOARD) */
-import AccountHome from "./pages/accounts/AccountHome";
-import AccountSearchResults from "./pages/accounts/AccountSearchResults";
+import AccountSearchPage from "./pages/accounts/AccountSearchPage";
 
 /* PAGES (ADMIN DASHBOARD) */
+import AdminSearchPage from "./pages/admin/AdminSearchPage";
+import EmployeeSearchResults from "./pages/admin/EmployeeSearchResults";
 
 function App() {
 	return (
@@ -27,13 +26,27 @@ function App() {
 					<Route index element={<LoginPage />} />
 
 					{/* PROTECTED */}
-					<Route path="dashboard" element={<AccountDashboardLayout />}>
-						<Route path="accounts" element={<AccountHome />}>
+					<Route path="dashboard" element={<MainDashboardLayout />}>
+						<Route index element={<DashboardHome />} />
+						<Route path="accounts" element={<EmployeeDashboard />}>
+							<Route index element={<AccountSearchPage />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
-							<Route path="search" element={<AccountSearchResults />} />
+							<Route
+								path="account-results"
+								element={<AccountSearchResults />}
+							/>
 						</Route>
-						<Route path="admin" element={<AdminDashboardLayout />}>
-							{/* ADMIN DASHBOARD ROUTES */}
+						<Route path="admin" element={<AdminDashboard />}>
+							<Route index element={<AdminSearchPage />} />
+							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
+							<Route
+								path="employee-results"
+								element={<EmployeeSearchResults />}
+							/>
+							<Route
+								path="account-results"
+								element={<AccountSearchResults />}
+							/>
 						</Route>
 					</Route>
 				</Route>

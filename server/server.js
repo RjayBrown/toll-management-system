@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 import { connectDB } from "./config/db.js";
 
+/* API ROUTES (Employee, Account, Admin data) */
 import apiRoutes from "./routes/data.js";
 
 dotenv.config();
@@ -9,12 +11,23 @@ dotenv.config();
 const app = express();
 
 /* MIDDLEWARE */
-app.use(express.json()); // accept json in req body
-app.use(express.urlencoded({ extended: true })); // accept form data in req body
+app.use(express.json());
 
 app.use("/api/data", apiRoutes);
 
+/* DEVELOPMENT CONFIGURATION */
 const PORT = process.env.PORT || 8000;
+
+/* PRODUCTION CONFIGURATION */
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+	});
+}
 
 app.listen(PORT, () => {
 	connectDB();

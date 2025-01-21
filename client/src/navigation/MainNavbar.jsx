@@ -7,19 +7,19 @@ const MainNavbar = () => {
 			<NavLink
 				to="/dashboard"
 				end
-				className={({ isActive }) => (isActive ? "pressed" : null)}
+				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Home
 			</NavLink>
 			<NavLink
 				to="/dashboard/accounts"
-				className={({ isActive }) => (isActive ? "pressed" : null)}
+				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Accounts
 			</NavLink>
 			<NavLink
 				to="/dashboard/admin"
-				className={({ isActive }) => (isActive ? "pressed" : null)}
+				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Admin Panel
 			</NavLink>

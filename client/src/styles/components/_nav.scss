@@ -15,7 +15,7 @@
 				color: var(--accent2);
 			}
 
-			&.pressed {
+			&.selected {
 				background-color: var(--primary-light);
 				color: var(--accent2);
 				font-weight: bold;
@@ -42,13 +42,14 @@
 
 			font-weight: bold;
 			color: var(--accent2);
+			border-bottom: 3px solid var(--primary-light);
 
 			&:hover {
 				background-color: var(--accent2);
 				color: var(--primary-light);
 			}
 
-			&.pressed {
+			&.selected {
 				padding-bottom: 0;
 				margin-bottom: 0;
 				border-bottom: 3px solid var(--accent2);

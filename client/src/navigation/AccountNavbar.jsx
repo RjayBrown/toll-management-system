@@ -1,54 +1,66 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AdminNavbar = () => {
+const AccountNavbar = () => {
 	return (
 		<nav className="flex__row nav__secondary">
 			<NavLink
-				to="/dashboard/admin"
+				to="/dashboard/accounts"
 				end
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
-				Admin Home
+				Accounts Home
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/employee-results"
-				className={({ isActive }) => (isActive ? "selected" : null)}
-			>
-				Employee Search List
-			</NavLink>
-			<NavLink
-				to="/dashboard/admin/account-results"
+				to="/dashboard/accounts/account-results"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Search List
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/account/info"
+				to="/dashboard/accounts/info"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/service-request"
+				to="dashboard/accounts/financials"
+				className={({ isActive }) => (isActive ? "selected" : null)}
+			>
+				Financials
+			</NavLink>
+			<NavLink
+				to="dashboard/accounts/service-request"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Service Request
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/toll-dispute"
+				to="dashboard/accounts/retail-tag-search"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
-				Toll Dispute
+				Retail Tag Search
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/violation-dispute"
+				to="dashboard/accounts/invoices"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
-				Violation Dispute
+				Invoices
+			</NavLink>
+			<NavLink
+				to="dashboard/accounts/violations"
+				className={({ isActive }) => (isActive ? "selected" : null)}
+			>
+				Violation
+			</NavLink>
+			<NavLink
+				to="dashboard/accounts/history"
+				className={({ isActive }) => (isActive ? "selected" : null)}
+			>
+				History
 			</NavLink>
 		</nav>
 	);
 };
 
-export default AdminNavbar;
+export default AccountNavbar;

@@ -1,7 +1,7 @@
 import React from "react";
 
-const AccountSearchButton = () => {
+const SearchButton = () => {
 	return <button className="search__dashboard">Go</button>;
 };
 
-export default AccountSearchButton;
+export default SearchButton;

@@ -1,23 +1,22 @@
 import { useState } from "react";
 import SearchButton from "../buttons/SearchButton";
 
-const AccountSearchForm = () => {
-	const [accountFormData, setAccountFormData] = useState({
+const AdminSearchForm = () => {
+	const [adminFormData, setAdminFormData] = useState({
+		employeeID: "",
 		accountNumber: "",
-		lastName: "",
-		firstName: "",
-		phoneNumber: "",
 		deviceNumber: "",
 		licensePlate: "",
 		violationNumber: "",
 		invoiceNumber: "",
+		ServiceRequestNumber: "",
 	});
 
-	// console.log(accountFormData);
+	// console.log(adminFormData);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setAccountFormData((prevformData) => {
+		setSearchFormData((prevformData) => {
 			return {
 				...prevformData,
 				[name]: value,
@@ -34,25 +33,12 @@ const AccountSearchForm = () => {
 		<form onSubmit={handleSubmit} className="flex__col form__search">
 			<legend>Search</legend>
 			<label htmlFor="accountNumber">
-				<span>Account Number:</span>
+				<span>Employee ID:</span>
 				<input type="text" name="accountNumber" onChange={handleChange} />
 			</label>
 			<label htmlFor="lastName">
-				<span>Last Name:</span>
+				<span>Account Number:</span>
 				<input type="text" name="lastName" onChange={handleChange} />
-			</label>
-			<label htmlFor="firstName">
-				<span>First Name:</span>
-				<input type="text" name="firstName" onChange={handleChange} />
-			</label>
-			<label htmlFor="phoneNumber">
-				<span>Day Phone:</span>
-				<input
-					type="phone"
-					name="phoneNumber"
-					pattern="[0-9]{10}"
-					onChange={handleChange}
-				/>
 			</label>
 			<label htmlFor="deviceNumber">
 				<span>Device Number:</span>
@@ -70,9 +56,17 @@ const AccountSearchForm = () => {
 				<span>Invoice Number:</span>
 				<input type="text" name="invoiceNumber" onChange={handleChange} />
 			</label>
+			<label htmlFor="serviceRequestNumber">
+				<span>Service Request Number:</span>
+				<input
+					type="text"
+					name="serviceRequestNumber"
+					onChange={handleChange}
+				/>
+			</label>
 			<SearchButton />
 		</form>
 	);
 };
 
-export default AccountSearchForm;
+export default AdminSearchForm;
