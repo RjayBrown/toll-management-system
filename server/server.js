@@ -3,8 +3,9 @@ import dotenv from "dotenv";
 import path from "path";
 import { connectDB } from "./config/db.js";
 
-/* API ROUTES (Employee, Account, Admin data) */
-import apiRoutes from "./routes/data.js";
+/* API ROUTES */
+import employeeRoutes from "./routes/employee.js";
+import driverRoutes from "./routes/driver.js";
 
 dotenv.config();
 
@@ -13,7 +14,8 @@ const app = express();
 /* MIDDLEWARE */
 app.use(express.json());
 
-app.use("/api/data", apiRoutes);
+app.use("/api/employee", employeeRoutes);
+app.use("/ap/driveri", driverRoutes);
 
 /* DEVELOPMENT CONFIGURATION */
 const PORT = process.env.PORT || 8000;

@@ -16,7 +16,7 @@ const AdminSearchForm = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setSearchFormData((prevformData) => {
+		setAdminFormData((prevformData) => {
 			return {
 				...prevformData,
 				[name]: value,
