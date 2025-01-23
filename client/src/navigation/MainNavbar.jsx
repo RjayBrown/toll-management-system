@@ -5,20 +5,20 @@ const MainNavbar = () => {
 	return (
 		<nav className="nav__primary">
 			<NavLink
-				to="/dashboard"
+				to="."
 				end
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Home
 			</NavLink>
 			<NavLink
-				to="/dashboard/accounts"
+				to="accounts"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Accounts
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin"
+				to="admin"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Admin Panel

@@ -79,12 +79,13 @@ form {
 			box-shadow: 1px 1px 1px 1px var(--accent);
 
 			& label {
-				// margin: -0.125rem auto;
+				margin: -0.125rem auto;
 			}
 
 			& input {
 				height: 1.5rem;
 				margin: 0;
+				width: 9rem;
 			}
 
 			& legend {

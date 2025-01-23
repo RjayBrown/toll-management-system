@@ -34,7 +34,10 @@ function App() {
 							<Route index element={<AccountSearchPage />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route path="search-results" element={<AccountSearchResults />} />
-							<Route path="info" element={<AccountInfoLayout />} />
+							<Route path="info" element={<AccountInfoLayout />}></Route>
+						</Route>
+						<Route path="admin" element={<AdminDashboard />}>
+							<Route index element={<AdminSearchPage />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route
 								path="employee-results"
