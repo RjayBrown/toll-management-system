@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 /* LAYOUTS */
 import MainLayout from "./layouts/MainLayout";
 import MainDashboardLayout from "./layouts/MainDashboardLayout";
-import EmployeeDashboard from "./layouts/EmployeeDashboard";
-import AdminDashboard from "./layouts/AdminDashboard";
+import EmployeeDashboard from "./layouts/employee/EmployeeDashboard";
+import AdminDashboard from "./layouts/admin/AdminDashboard";
 
 /* PAGES (MAIN) */
 import LoginPage from "./pages/LoginPage";
@@ -17,6 +17,8 @@ import AccountSearchPage from "./pages/accounts/AccountSearchPage";
 /* PAGES (ADMIN DASHBOARD) */
 import AdminSearchPage from "./pages/admin/AdminSearchPage";
 import EmployeeSearchResults from "./pages/admin/EmployeeSearchResults";
+import AccountDetailsTop from "./components/forms/AccountDetailsTop";
+import AccountInfoLayout from "./layouts/AccountInfoLayout";
 
 function App() {
 	return (
@@ -31,13 +33,8 @@ function App() {
 						<Route path="accounts" element={<EmployeeDashboard />}>
 							<Route index element={<AccountSearchPage />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
-							<Route
-								path="account-results"
-								element={<AccountSearchResults />}
-							/>
-						</Route>
-						<Route path="admin" element={<AdminDashboard />}>
-							<Route index element={<AdminSearchPage />} />
+							<Route path="search-results" element={<AccountSearchResults />} />
+							<Route path="info" element={<AccountInfoLayout />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route
 								path="employee-results"
@@ -47,6 +44,7 @@ function App() {
 								path="account-results"
 								element={<AccountSearchResults />}
 							/>
+							<Route path="info" element={<AccountDetailsTop />} />
 						</Route>
 					</Route>
 				</Route>

@@ -1,14 +1,14 @@
 .flex {
 	&__row {
 		display: flex;
-		flex-flow: row wrap;
+		flex-flow: row nowrap;
 		justify-content: center;
 		align-items: center;
 	}
 
 	&__col {
 		display: flex;
-		flex-flow: column wrap;
+		flex-flow: column nowrap;
 		justify-content: center;
 		align-items: center;
 	}

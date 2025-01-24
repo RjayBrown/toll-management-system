@@ -28,6 +28,8 @@ const driverSchema = new mongoose.Schema(
 		agency: { type: String, required: true },
 		accountType: { type: String, required: true },
 		accountStatus: { type: String, required: true },
+		securityQuestion: String,
+		securityAnswer: String,
 		payMethod: { type: String, required: true },
 		vehicles: [
 			{

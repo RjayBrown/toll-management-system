@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import SearchButton from "../buttons/SearchButton";
 
 const AccountSearchForm = () => {
-	// Create driver account context
 	const [accountFormData, setAccountFormData] = useState({
 		accountNumber: "",
 		lastName: "",
@@ -13,6 +14,10 @@ const AccountSearchForm = () => {
 		violationNumber: "",
 		invoiceNumber: "",
 	});
+
+	// fetch data from api
+	const [param, setParam] = useState(null);
+	const navigate = useNavigate();
 
 	// console.log(accountFormData);
 
@@ -28,8 +33,16 @@ const AccountSearchForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("form submitted!");
 		// search logic
+		const fields = Object.keys(accountFormData);
+		// console.log(fields);
+		fields.forEach((field) => {
+			if (accountFormData[field]) {
+				// setParam[field]
+				console.log("form submitted!");
+				console.log({ field: accountFormData[field] });
+			}
+		});
 	};
 	return (
 		<form onSubmit={handleSubmit} className="flex__col form__search">

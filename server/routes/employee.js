@@ -3,7 +3,7 @@ import { employeeController } from "../controllers/employee.js";
 
 const router = express.Router();
 
-router.get("/:id", employeeController.getEmployee);
+router.get("/", employeeController.getEmployee);
 router.post("/", employeeController.addEmployee);
 router.put("/", employeeController.updateEmployeeInfo);
 router.delete("/", employeeController.deleteEmployee);

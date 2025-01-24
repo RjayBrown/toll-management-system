@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/employee", employeeRoutes);
-app.use("/ap/driveri", driverRoutes);
+app.use("/api/driver", driverRoutes);
 
 /* DEVELOPMENT CONFIGURATION */
 const PORT = process.env.PORT || 8000;

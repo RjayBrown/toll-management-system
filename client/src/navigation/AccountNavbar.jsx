@@ -12,7 +12,7 @@ const AccountNavbar = () => {
 				Accounts Home
 			</NavLink>
 			<NavLink
-				to="/dashboard/accounts/account-results"
+				to="/dashboard/accounts/search-results"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Search List

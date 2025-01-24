@@ -1,8 +1,32 @@
+// BUTTON GROUPS
+.btns {
+	justify-content: start;
+	align-items: self-end;
+	gap: 1rem;
+
+	& .modal {
+		border-radius: 0.25rem;
+		justify-self: end;
+		margin: 0 1.5rem;
+		width: max-content;
+		text-align: end;
+
+		background-color: var(--accent2);
+		color: var(--primary-light);
+		padding: 0 0.5rem 0 1.5rem;
+
+		&:hover {
+			background-color: var(--accent3);
+			color: var(--primary-light);
+		}
+	}
+}
+
 button {
 	transition: all 0.15s ease-in;
 	border-radius: 15px;
 
-	// SEARCH BUTTONS
+	// SEARCH BUTTON
 	&.search {
 		&__top,
 		&__dashboard {
@@ -26,6 +50,7 @@ button {
 			background-color: var(--accent2);
 			color: var(--primary-light);
 			border: 2px solid var(--accent2);
+			padding: 0 0.5rem;
 
 			&:hover {
 				background-color: var(--accent3);

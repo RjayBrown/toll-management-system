@@ -24,7 +24,7 @@ const AdminNavbar = () => {
 				Account Search List
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/account/info"
+				to="/dashboard/admin/info"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
