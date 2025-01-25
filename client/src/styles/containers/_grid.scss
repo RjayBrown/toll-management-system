@@ -5,8 +5,57 @@
 
 	&__account {
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		border: 1px solid var(--accent);
-		margin: auto 0.25rem;
+		border: 1px solid var(--grey);
 		padding: 1rem 0;
+	}
+
+	&__table.search-results {
+		text-align: center;
+		width: 100%;
+		border-collapse: collapse;
+
+		& caption {
+			font-weight: bold;
+			text-align: left;
+			padding: 0.5rem;
+		}
+
+		th,
+		tfoot {
+			padding: 0.5rem;
+			background-color: var(--grey);
+		}
+
+		& tr,
+		th,
+		td {
+			border: 2px solid #cccccc;
+			font-weight: 400;
+		}
+
+		& tbody tr {
+			text-align: left;
+			&.on {
+				background-color: #fff7c2;
+			}
+		}
+
+		& td input[disabled] {
+			width: 100%;
+		}
+
+		tfoot th {
+			padding: 0;
+		}
+
+		& svg {
+			transform: scale(1.5);
+			margin-inline: 0.5rem;
+			color: var(--primary-blue);
+
+			&:hover {
+				color: var(--rich-blue);
+			}
+		}
 	}
 }

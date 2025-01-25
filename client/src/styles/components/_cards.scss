@@ -1,0 +1,10 @@
+.card {
+	border: 2px solid var(--grey);
+	padding-bottom: 0.5rem;
+	margin-bottom: 0.125rem;
+	box-shadow: 2px 1px 2px var(--grey);
+
+	&:focus {
+		border: 2px solid var(--light-blue);
+	}
+}

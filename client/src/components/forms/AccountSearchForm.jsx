@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import SearchButton from "../buttons/SearchButton";
 
@@ -84,6 +84,7 @@ const AccountSearchForm = () => {
 				<span>Invoice Number:</span>
 				<input type="text" name="invoiceNumber" onChange={handleChange} />
 			</label>
+			{/* add functionality for fetch and navigate to search results page when clicked */}
 			<SearchButton />
 		</form>
 	);

@@ -11,12 +11,12 @@
 		width: max-content;
 		text-align: end;
 
-		background-color: var(--accent2);
+		background-color: var(--primary-blue);
 		color: var(--primary-light);
 		padding: 0 0.5rem 0 1.5rem;
 
 		&:hover {
-			background-color: var(--accent3);
+			background-color: var(--light-blue);
 			color: var(--primary-light);
 		}
 	}
@@ -41,23 +41,24 @@ button {
 			border: 1px solid var(--primary-light);
 
 			&:hover {
-				background-color: var(--accent);
-				border: 1px solid var(--accent);
+				background-color: var(--grey);
+				border: 1px solid var(--grey);
 			}
 		}
 
 		&__dashboard {
-			background-color: var(--accent2);
+			background-color: var(--primary-blue);
 			color: var(--primary-light);
-			border: 2px solid var(--accent2);
+			border: 2px solid var(--primary-blue);
 			padding: 0 0.5rem;
 
 			&:hover {
-				background-color: var(--accent3);
-				border: 2px solid var(--accent3);
+				background-color: var(--rich-blue);
+				border: 2px solid var(--rich-blue);
+				border: 2px solid var(--primary-dark);
 			}
 			&:active {
-				border: 2px solid var(--primary-dark);
+				transform: scale(0.975);
 			}
 		}
 	}
@@ -75,7 +76,7 @@ button {
 		box-shadow: 1px 1px 5px 5px var(--primary-dark);
 
 		&:hover {
-			background-color: var(--accent2);
+			background-color: var(--light-blue);
 			color: var(--primary-light);
 		}
 

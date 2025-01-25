@@ -19,16 +19,16 @@ const AccountDetailsTop = () => {
 		}).format(date);
 	};
 	return (
-		<section className="grid grid__account">
+		<section className="grid grid__account card" tabIndex={0}>
 			<form className="flex__col form__readonly">
 				<label className="flex__row" htmlFor="agency">
 					<span>Agency:</span>
 					<input
 						type="text"
-						className="big"
+						className="big ff"
 						name="agency"
 						value={"MTA"}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="accountName">
@@ -38,7 +38,7 @@ const AccountDetailsTop = () => {
 						className="big"
 						name="accountName"
 						value={"JOHN DOE"}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="accountType">
@@ -50,7 +50,7 @@ const AccountDetailsTop = () => {
 						className="big"
 						name="accountType"
 						value={"PUNREG"}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="status">
@@ -61,7 +61,7 @@ const AccountDetailsTop = () => {
 						className="big status"
 						name="status"
 						value={"ACTIVE"}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="paymentMethod">
@@ -71,7 +71,7 @@ const AccountDetailsTop = () => {
 						className="big"
 						name="paymentMethod"
 						value={"CASH"}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="securityQA">
@@ -82,19 +82,21 @@ const AccountDetailsTop = () => {
 						name="securityQA"
 						value={"What is your PIN Number: 2929"}
 						style={{ resize: "vertical" }}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 			</form>
 			<form className="flex__col form__readonly">
 				<label className="flex__row" htmlFor="accountNumber">
-					<span>Acct #:</span>
+					<span>
+						<IoMdStar color="red" /> Acct #:
+					</span>
 					<input
 						type="text"
 						className="small"
 						name="accountNumber"
 						value={123456789}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="numOfDevices">
@@ -104,7 +106,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="numOfDevices"
 						value={0}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="numOfVehicles">
@@ -114,7 +116,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="numOfVehicles"
 						value={0}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="numOfViolations">
@@ -124,7 +126,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="numOfViolations"
 						value={0}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="numOfTolls">
@@ -134,7 +136,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="numOfTolls"
 						value={0}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="serviceRequests">
@@ -144,7 +146,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="serviceRequests"
 						value={0}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 			</form>
@@ -156,7 +158,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="accountBalance"
 						value={formatNum(29)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="tollBillBalance">
@@ -166,7 +168,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="tollBillBalance"
 						value={formatNum(0)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="violationBalance">
@@ -176,7 +178,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="violationBalance"
 						value={formatNum(0)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="violationFees">
@@ -186,7 +188,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="violationFees"
 						value={formatNum(0)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="billOverpayment">
@@ -196,7 +198,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="billOverpayment"
 						value={formatNum(0)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="deviceDeposit">
@@ -206,7 +208,7 @@ const AccountDetailsTop = () => {
 						className="small"
 						name="deviceDeposit"
 						value={formatNum(16)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 			</form>
@@ -218,7 +220,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="lastPaymentDate"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="lastTollDate">
@@ -228,7 +230,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="lastTollDate"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="tollBillDueDate">
@@ -238,7 +240,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="tollBillDueDate"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="escalationDate">
@@ -248,7 +250,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="escalationDate"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="accountOpenDate">
@@ -260,7 +262,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="accountOpenDate"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 				<label className="flex__row" htmlFor="deviceDeposit">
@@ -270,7 +272,7 @@ const AccountDetailsTop = () => {
 						className="med"
 						name="deviceDeposit"
 						value={formatDate(1737664806655)}
-						disabled
+						readOnly={true}
 					/>
 				</label>
 			</form>
