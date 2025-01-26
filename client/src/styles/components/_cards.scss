@@ -7,4 +7,10 @@
 	&:focus {
 		border: 2px solid var(--light-blue);
 	}
+
+	&.home {
+		margin: 0.25rem;
+		padding: 0.25rem;
+		height: 6.25rem;
+	}
 }
