@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const driverSchema = new mongoose.Schema(
+const accountSchema = new mongoose.Schema(
 	{
 		accountNumber: {
 			type: Number,
@@ -116,6 +116,6 @@ const driverSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-const Driver = mongoose.model("Driver", driverSchema);
+const Account = mongoose.model("Driver Account", accountSchema);
 
-export default Driver;
+export default Account;

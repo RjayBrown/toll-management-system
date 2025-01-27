@@ -5,7 +5,7 @@ import { connectDB } from "./config/db.js";
 
 /* API ROUTES */
 import employeeRoutes from "./routes/employee.js";
-import driverRoutes from "./routes/driver.js";
+import accountRoutes from "./routes/account.js";
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/employee", employeeRoutes);
-app.use("/api/driver", driverRoutes);
+app.use("/api/accounts", accountRoutes);
 
 /* DEVELOPMENT CONFIGURATION */
 const PORT = process.env.PORT || 8000;
