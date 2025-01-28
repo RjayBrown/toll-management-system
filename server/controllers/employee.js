@@ -2,37 +2,38 @@ import Employee from "../models/Employee.js";
 
 export const employeeController = {
 	getEmployee: async (req, res) => {
-		const data = req.body;
-
 		try {
-			const data = await Employee.findOne(data);
-			console.log("Found Employees");
-			return res.status(200).json({ success: true, data: data });
+			const data = await Employee.find();
+			console.log("Found Employee");
+			return res.status(200).json({ success: true, employee: data });
 		} catch (error) {
-			console.log("Failed to get data"), error.message;
+			console.log("Failed to get employee data"), error.message;
 			return res
 				.status(500)
-				.json({ success: false, message: "Server/Internal error" });
+				.json({ success: false, message: `Server/Internal error ${error}` });
 		}
 	},
 	addEmployee: async (req, res) => {
 		const data = req.body;
 		try {
 			if (!data) {
-				console.log("Invalid data");
+				console.log("Invalid employee data");
 				return res
 					.status(404)
-					.json({ success: false, message: "Invalid data/Data not found" });
+					.json({
+						success: false,
+						message: "Invalid employee data: Data not found",
+					});
 			}
 			const newEmployee = new Employee(data);
 			await newEmployee.save();
 			console.log("Added Employee");
-			return res.status(201).json({ success: true, data: newEmployee });
+			return res.status(201).json({ success: true, employee: newEmployee });
 		} catch (error) {
-			console.log("Failed to add data", error.message);
+			console.log("Failed to add employee", error.message);
 			return res
 				.status(500)
-				.json({ success: false, message: "Server/Internal error" });
+				.json({ success: false, message: `Server/Internal error ${error}` });
 		}
 	},
 	updateEmployeeInfo: async (req, res) => {
@@ -46,7 +47,7 @@ export const employeeController = {
 			console.log("Invalid id");
 			return res
 				.status(404)
-				.json({ success: false, message: "Invalid id/Employee not found" });
+				.json({ success: false, message: "Invalid id: Employee not found" });
 		}
 
 		try {
@@ -54,12 +55,14 @@ export const employeeController = {
 				new: true,
 			});
 			console.log("Updated Employee");
-			return res.status(200).json({ success: true, data: updatedEmployeeInfo });
+			return res
+				.status(200)
+				.json({ success: true, employee: updatedEmployeeInfo });
 		} catch (error) {
-			console.log("Failed to update data", error.message);
+			console.log("Failed to update employee data", error.message);
 			return res
 				.status(500)
-				.json({ success: false, message: "Server/Internal error" });
+				.json({ success: false, message: `Server/Internal error ${error}` });
 		}
 	},
 	deleteEmployee: async (req, res) => {
@@ -69,7 +72,7 @@ export const employeeController = {
 			console.log("Invalid id");
 			return res
 				.status(404)
-				.json({ success: false, message: "Invalid id/Employee not found" });
+				.json({ success: false, message: "Invalid id: Employee not found" });
 		}
 
 		try {
@@ -79,10 +82,10 @@ export const employeeController = {
 				.status(200)
 				.json({ success: true, message: "Employee deleted" });
 		} catch (error) {
-			console.log("Failed to delete data", error.message);
+			console.log("Failed to delete employee data", error.message);
 			return res
 				.status(500)
-				.json({ success: false, message: "Server/Internal error" });
+				.json({ success: false, message: `Server/Internal error ${error}` });
 		}
 	},
 };
