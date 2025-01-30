@@ -1,5 +1,5 @@
 import React from "react";
-import AdminSearchForm from "../../components/Forms/AdminSearchForm";
+import AdminSearchForm from "../../components/forms/admin/AdminSearchForm";
 
 const AdminSearchPage = () => {
 	return <AdminSearchForm />;

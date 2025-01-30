@@ -16,7 +16,7 @@
 		padding: 0 0.5rem 0 1.5rem;
 
 		&:hover {
-			background-color: var(--light-blue);
+			background-color: var(--rich-blue);
 			color: var(--primary-light);
 		}
 	}
@@ -42,23 +42,22 @@ button {
 
 			&:hover {
 				background-color: var(--grey);
-				border: 1px solid var(--grey);
 			}
 		}
 
 		&__dashboard {
 			background-color: var(--primary-blue);
 			color: var(--primary-light);
-			border: 2px solid var(--primary-blue);
+			border: 3px solid var(--primary-blue);
 			padding: 0 0.5rem;
 
 			&:hover {
-				background-color: var(--rich-blue);
-				border: 2px solid var(--rich-blue);
-				border: 2px solid var(--primary-dark);
+				background-color: var(--light-blue);
+				border: 3px solid var(--light-blue);
 			}
 			&:active {
-				transform: scale(0.975);
+				transform: scale(0.95);
+				border: 3px solid var(--primary-dark);
 			}
 		}
 	}
@@ -76,7 +75,7 @@ button {
 		box-shadow: 1px 1px 5px 5px var(--primary-dark);
 
 		&:hover {
-			background-color: var(--light-blue);
+			background-color: var(--rich-blue);
 			color: var(--primary-light);
 		}
 

@@ -38,6 +38,14 @@
 			&.on {
 				background-color: #fff7c2;
 			}
+
+			.link {
+				color: var(--light-blue);
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 
 		& td input[disabled] {

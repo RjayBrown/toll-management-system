@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import AccountNavbar from "../../navigation/AccountNavbar";
+import AccountNavbar from "../../navigation/accounts/AccountNavbar";
 
-const EmployeeDashboard = () => {
+const AccountDashboard = () => {
 	return (
 		<>
 			<AccountNavbar />
@@ -12,4 +12,4 @@ const EmployeeDashboard = () => {
 	);
 };
 
-export default EmployeeDashboard;
+export default AccountDashboard;

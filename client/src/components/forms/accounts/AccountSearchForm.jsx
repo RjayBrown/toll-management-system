@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import SearchButton from "../buttons/SearchButton";
+import SearchButton from "../../buttons/SearchButton";
 
 const AccountSearchForm = () => {
 	const [accountFormData, setAccountFormData] = useState({
@@ -45,7 +45,11 @@ const AccountSearchForm = () => {
 		});
 	};
 	return (
-		<form onSubmit={handleSubmit} className="flex__col form__search">
+		<form
+			onSubmit={handleSubmit}
+			className="flex__col form__search card__shadow"
+			tabIndex={0}
+		>
 			<legend>Search</legend>
 			<label htmlFor="accountNumber">
 				<span>Account Number:</span>

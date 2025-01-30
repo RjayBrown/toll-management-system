@@ -1,23 +1,55 @@
 import { useEffect, useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import AccountDetailsTop from "../components/forms/AccountDetailsTop";
 import { Link } from "react-router-dom";
+
+import AccountDetailsTop from "../components/forms/accounts/AccountDetailsTop";
+import Loading from "../components/global/Loading";
+
+import fetchData from "../api";
 
 const AccountSearchResults = () => {
 	const [accounts, setAccounts] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	// const [params, setParams] = useParams();
 
 	useEffect(() => {
-		fetch("http://localhost:8000/api/accounts/search")
-			.then((res) => res.json())
-			.then((data) => {
-				setAccounts(data.accounts);
-				console.log(data.accounts);
-			});
+		const getAccounts = async () => {
+			const response = await fetchData.accounts();
+			setAccounts(response.accounts);
+		};
+
+		getAccounts();
+
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 1000);
 	}, []);
+
+	const formatPhoneNumber = (nums) => {
+		const areaCode = nums
+			.toString()
+			.split("")
+			.filter((num, i) => i < 3)
+			.join("");
+		const first3 = nums
+			.toString()
+			.split("")
+			.filter((num, i) => i >= 3 && i < 6)
+			.join("");
+		const last4 = nums
+			.toString()
+			.split("")
+			.filter((num, i) => i >= 6 && i <= 9)
+			.join("");
+
+		return `(${areaCode}) ${first3}-${last4}`;
+	};
 
 	/* NEED TO ADD ROW HIGHLIGHT STYLES */
 
-	return (
+	return isLoading ? (
+		<Loading />
+	) : (
 		<>
 			<section className="card" tabIndex={0}>
 				<table className="grid__table search-results">
@@ -25,8 +57,8 @@ const AccountSearchResults = () => {
 					<thead>
 						<tr>
 							<th>Account Name</th>
-							<th>Account Number</th>
 							<th>Account Type</th>
+							<th>Account Number</th>
 							<th>Account Status</th>
 							<th>Phone</th>
 							<th>Address Line 1</th>
@@ -44,17 +76,19 @@ const AccountSearchResults = () => {
 											<td>
 												<Link
 													to={`../info/:${account.accountNumber}`}
+													className="link"
 												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</Link>
 											</td>
 											<td>
 												<Link
 													to={`../info/:${account.accountNumber}`}
-												>{`${account.accountNumber}`}</Link>
+												>{`${account.accountType}`}</Link>
 											</td>
 											<td>
 												<Link
+													className="link"
 													to={`../info/:${account.accountNumber}`}
-												>{`${account.accountType}`}</Link>
+												>{`${account.accountNumber}`}</Link>
 											</td>
 											<td>
 												{" "}
@@ -63,9 +97,9 @@ const AccountSearchResults = () => {
 												>{`${account.accountStatus}`}</Link>
 											</td>
 											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.demographics.phone}`}</Link>
+												<Link to={`../info/:${account.accountNumber}`}>
+													{formatPhoneNumber(account.demographics.phone)}
+												</Link>
 											</td>
 											<td>
 												<Link

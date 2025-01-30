@@ -1,4 +1,4 @@
-export default fetchData = {
+const fetchData = {
 	async accounts() {
 		const res = await fetch("http://localhost:8000/api/accounts/search");
 		const data = await res.json();
@@ -11,3 +11,5 @@ export default fetchData = {
 		return data;
 	},
 };
+
+export default fetchData;

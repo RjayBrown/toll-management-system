@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchButton from "../buttons/SearchButton";
+import SearchButton from "../../buttons/SearchButton";
 
 const AdminSearchForm = () => {
 	const [adminFormData, setAdminFormData] = useState({
@@ -30,7 +30,11 @@ const AdminSearchForm = () => {
 		// search logic
 	};
 	return (
-		<form onSubmit={handleSubmit} className="flex__col form__search">
+		<form
+			onSubmit={handleSubmit}
+			className="flex__col form__search card__shadow"
+			tabIndex={0}
+		>
 			<legend>Search</legend>
 			<label htmlFor="accountNumber">
 				<span>Employee ID:</span>
