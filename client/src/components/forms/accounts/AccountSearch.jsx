@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 import SearchButton from "../../buttons/SearchButton";
 
-const AccountSearchForm = () => {
+const AccountSearch = () => {
 	const [accountFormData, setAccountFormData] = useState({
 		accountNumber: "",
 		lastName: "",
@@ -94,4 +94,4 @@ const AccountSearchForm = () => {
 	);
 };
 
-export default AccountSearchForm;
+export default AccountSearch;

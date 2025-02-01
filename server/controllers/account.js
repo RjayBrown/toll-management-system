@@ -1,7 +1,8 @@
 import Account from "../models/Account.js";
 
 export const accountController = {
-	getAccounts: async (req, res) => {
+	getAccount: async (req, res) => {
+		console.log(req.params);
 		try {
 			const data = await Account.find();
 			console.log("Found Drivers");

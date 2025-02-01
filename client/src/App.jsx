@@ -1,36 +1,36 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-/* LAYOUTS */
-import MainLayout from "./layouts/MainLayout";
-import MainDashboardLayout from "./layouts/MainDashboardLayout";
+/* MAIN */
+import MainLayout from "./layouts/global/MainLayout";
+import MainDashboardLayout from "./layouts/global/MainDashboardLayout";
+import LoginForm from "./components/forms/LoginForm";
+import DashboardHome from "./components/global/DashboardHome";
+import NotFound from "./components/global/NotFound";
+
+/* ACCOUNT DASHBOARD */
 import AccountDashboard from "./layouts/accounts/AccountDashboard";
-import AdminDashboard from "./layouts/admin/AdminDashboard";
-
-/* PAGES (MAIN) */
-import LoginPage from "./pages/LoginPage";
-import DashboardHome from "./pages/DashboardHome";
-import AccountSearchResults from "./pages/AccountSearchResults";
-
-/* PAGES (ACCOUNT DASHBOARD) */
-import AccountSearchPage from "./pages/accounts/AccountSearchPage";
-/* PAGES (ADMIN DASHBOARD) */
-import AdminSearchPage from "./pages/admin/AdminSearchPage";
-import EmployeeSearchResults from "./pages/admin/EmployeeSearchResults";
-import AccountDetailsTop from "./components/forms/accounts/AccountDetailsTop";
+import AccountSearch from "./components/forms/accounts/AccountSearch";
+import AccountSearchResults from "./components/global/AccountSearchResults";
 import AccountInfoLayout from "./layouts/accounts/AccountInfoLayout";
+
+/* ADMIN DASHBOARD */
+import AdminDashboard from "./layouts/admin/AdminDashboard";
+import AdminEmployeeSearch from "./components/forms/admin/AdminEmployeeSearch";
+import EmployeeSearchResults from "./components/global/EmployeeSearchResults";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route element={<MainLayout />}>
-					<Route index element={<LoginPage />} />
+					<Route index element={<LoginForm />} />
 
 					{/* PROTECTED */}
 					<Route path="dashboard" element={<MainDashboardLayout />}>
+						<Route path="*" element={<NotFound />} />
 						<Route index element={<DashboardHome />} />
 						<Route path="accounts" element={<AccountDashboard />}>
-							<Route index element={<AccountSearchPage />} />
+							<Route index element={<AccountSearch />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route path="search-results" element={<AccountSearchResults />} />
 							{/* ADD ROUTE PARAMS FOR SELECTED ACCOUNT */}
@@ -43,7 +43,7 @@ function App() {
 							{/* <Route path="history" element={<TollHistoryLayout />}></Route> */}
 						</Route>
 						<Route path="admin" element={<AdminDashboard />}>
-							<Route index element={<AdminSearchPage />} />
+							<Route index element={<AdminEmployeeSearch />} />
 							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route
 								path="employee-results"
@@ -53,7 +53,7 @@ function App() {
 								path="account-results"
 								element={<AccountSearchResults />}
 							/>
-							<Route path="info" element={<AccountDetailsTop />} />
+							<Route path="info" element={<AccountInfoLayout />}></Route>
 						</Route>
 					</Route>
 				</Route>

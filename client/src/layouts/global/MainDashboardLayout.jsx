@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import MainNavbar from "../navigation/MainNavbar";
+import MainNavbar from "../../components/navigation/MainNavbar";
 
 const MainDashboardLayout = () => {
 	return (

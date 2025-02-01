@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import AccountDetailsTop from "../../components/forms/accounts/AccountDetailsTop";
-import AccountInfoNavbar from "../../navigation/accounts/AccountInfoNavbar";
-import AccountInfoSubNavbar from "../../navigation/accounts/AccountInfoSubNavbar";
+import AccountDetails from "../../components/forms/accounts/AccountDetails";
+import AccountInfoNavbar from "../../components/navigation/accounts/AccountInfoNavbar";
+import AccountInfoSubNavbar from "../../components/navigation/accounts/AccountInfoSubNavbar";
 
 const AccountInfoLayout = () => {
 	return (
 		<>
-			<AccountDetailsTop />
+			<AccountDetails />
 			<AccountInfoNavbar />
 			<AccountInfoSubNavbar />
 			<Outlet />

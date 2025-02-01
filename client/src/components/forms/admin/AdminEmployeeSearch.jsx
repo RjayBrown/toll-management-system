@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SearchButton from "../../buttons/SearchButton";
 
-const AdminSearchForm = () => {
+const AdminEmployeeSearch = () => {
 	const [adminFormData, setAdminFormData] = useState({
 		employeeID: "",
 		accountNumber: "",
@@ -73,4 +73,4 @@ const AdminSearchForm = () => {
 	);
 };
 
-export default AdminSearchForm;
+export default AdminEmployeeSearch;

@@ -25,28 +25,30 @@ const LoginForm = () => {
 		// login logic
 	};
 	return (
-		<form onSubmit={handleSubmit} className="flex__col form__login">
-			<legend>Welcome to the Back Office Toll Management System</legend>
-			<label>
-				<span>Employee ID</span>
-				<input
-					type="text"
-					name="employeeID"
-					value={loginFormData.userid}
-					onChange={handleChange}
-				/>
-			</label>
-			<label>
-				<span>Password</span>
-				<input
-					type="password"
-					name="password"
-					value={loginFormData.password}
-					onChange={handleChange}
-				/>
-			</label>
-			<LoginButton />
-		</form>
+		<div className="flex__col login" style={{ height: "85vh" }}>
+			<form onSubmit={handleSubmit} className="flex__col form__login">
+				<legend>Welcome to the Back Office Toll Management System</legend>
+				<label>
+					<span>Employee ID</span>
+					<input
+						type="text"
+						name="employeeID"
+						value={loginFormData.userid}
+						onChange={handleChange}
+					/>
+				</label>
+				<label>
+					<span>Password</span>
+					<input
+						type="password"
+						name="password"
+						value={loginFormData.password}
+						onChange={handleChange}
+					/>
+				</label>
+				<LoginButton />
+			</form>
+		</div>
 	);
 };
 

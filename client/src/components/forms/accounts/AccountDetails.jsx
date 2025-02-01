@@ -1,7 +1,9 @@
 import React from "react";
 import { IoMdStar } from "react-icons/io";
 
-const AccountDetailsTop = () => {
+import SidebarButton from "../../buttons/SidebarButton";
+
+const AccountDetails = () => {
 	const formatNum = (num) => {
 		const formatted = new Intl.NumberFormat("en-US", {
 			style: "currency",
@@ -292,14 +294,14 @@ const AccountDetailsTop = () => {
 				</label>
 			</form>
 			<div className="flex__col btns">
-				<button className="modal">Toll History</button>
-				<button className="modal">Financials</button>
-				<button className="modal">Toll Bills</button>
-				<button className="modal">Violations</button>
-				<button className="modal">Add Note</button>
+				<SidebarButton>Toll History</SidebarButton>
+				<SidebarButton>Financials</SidebarButton>
+				<SidebarButton>Toll Bills</SidebarButton>
+				<SidebarButton>Violations</SidebarButton>
+				<SidebarButton>Add Note</SidebarButton>
 			</div>
 		</section>
 	);
 };
 
-export default AccountDetailsTop;
+export default AccountDetails;

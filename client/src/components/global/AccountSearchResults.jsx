@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
-import AccountDetailsTop from "../components/forms/accounts/AccountDetailsTop";
-import Loading from "../components/global/Loading";
+import AccountDetails from "../forms/accounts/AccountDetails";
+import Loading from "../global/Loading";
 
-import fetchData from "../api";
+import fetchData from "../../api";
 
 const AccountSearchResults = () => {
 	const [accounts, setAccounts] = useState(null);
@@ -145,7 +145,7 @@ const AccountSearchResults = () => {
 					</tfoot>
 				</table>
 			</section>
-			<AccountDetailsTop />
+			<AccountDetails />
 		</>
 	);
 };
