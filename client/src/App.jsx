@@ -4,19 +4,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/global/MainLayout";
 import MainDashboardLayout from "./layouts/global/MainDashboardLayout";
 import LoginForm from "./components/forms/LoginForm";
-import DashboardHome from "./components/global/DashboardHome";
+import DashboardHome from "./components/global/dashboard/DashboardHome";
 import NotFound from "./components/global/NotFound";
 
 /* ACCOUNT DASHBOARD */
 import AccountDashboard from "./layouts/accounts/AccountDashboard";
 import AccountSearch from "./components/forms/accounts/AccountSearch";
-import AccountSearchResults from "./components/global/AccountSearchResults";
+import AccountSearchResults from "./components/global/dashboard/AccountSearchResults";
 import AccountInfoLayout from "./layouts/accounts/AccountInfoLayout";
 
 /* ADMIN DASHBOARD */
 import AdminDashboard from "./layouts/admin/AdminDashboard";
 import AdminEmployeeSearch from "./components/forms/admin/AdminEmployeeSearch";
-import EmployeeSearchResults from "./components/global/EmployeeSearchResults";
+import EmployeeSearchResults from "./components/global/dashboard/EmployeeSearchResults";
 
 function App() {
 	return (
@@ -31,10 +31,12 @@ function App() {
 						<Route index element={<DashboardHome />} />
 						<Route path="accounts" element={<AccountDashboard />}>
 							<Route index element={<AccountSearch />} />
-							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
 							<Route path="search-results" element={<AccountSearchResults />} />
 							{/* ADD ROUTE PARAMS FOR SELECTED ACCOUNT */}
-							<Route path="info" element={<AccountInfoLayout />}></Route>
+							<Route
+								path="info/:account"
+								element={<AccountInfoLayout />}
+							></Route>
 							{/* <Route path="financials" element={<FinancialsLayout />}></Route> */}
 							{/* <Route path="service-requests" element={<ServiceRequestLayout />}></Route> */}
 							{/* <Route path="otg" element={<OTGLayout />}></Route> */}

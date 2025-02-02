@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import {
+	useNavigate,
+	useOutletContext,
+	useSearchParams,
+} from "react-router-dom";
 
 import SearchButton from "../../buttons/SearchButton";
 
 const AccountSearch = () => {
+	const [accounts, setAccounts] = useOutletContext();
 	const [accountFormData, setAccountFormData] = useState({
 		accountNumber: "",
 		lastName: "",
@@ -14,10 +19,6 @@ const AccountSearch = () => {
 		violationNumber: "",
 		invoiceNumber: "",
 	});
-
-	// fetch data from api
-	const [param, setParam] = useState(null);
-	const navigate = useNavigate();
 
 	// console.log(accountFormData);
 
@@ -40,7 +41,7 @@ const AccountSearch = () => {
 			if (accountFormData[field]) {
 				// setParam[field]
 				console.log("form submitted!");
-				console.log({ field: accountFormData[field] });
+				console.log({ [field]: accountFormData[field] });
 			}
 		});
 	};

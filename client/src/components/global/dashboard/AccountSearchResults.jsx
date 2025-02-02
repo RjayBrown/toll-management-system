@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import { Link } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 
-import AccountDetails from "../forms/accounts/AccountDetails";
-import Loading from "../global/Loading";
+import AccountDetails from "../../forms/accounts/AccountDetails";
+import Loading from "../Loading";
 
-import fetchData from "../../api";
+import fetchData from "../../../api";
 
 const AccountSearchResults = () => {
-	const [accounts, setAccounts] = useState(null);
+	const [accounts, setAccounts] = useOutletContext(null);
+	const [currentAccount, setCurrentAccount] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
-	// const [params, setParams] = useParams();
 
 	useEffect(() => {
 		const getAccounts = async () => {
@@ -24,6 +24,15 @@ const AccountSearchResults = () => {
 			setIsLoading(false);
 		}, 1000);
 	}, []);
+
+	useEffect(() => {
+		const rows = document.querySelectorAll(".acct-row");
+		rows.forEach((row, i, rows) => {
+			row.addEventListener("click", () => {
+				row.classList.add("on");
+			});
+		});
+	}, [accounts]);
 
 	const formatPhoneNumber = (nums) => {
 		const areaCode = nums
@@ -72,49 +81,37 @@ const AccountSearchResults = () => {
 						{accounts
 							? accounts.map((account) => {
 									return (
-										<tr key={account.accountNumber} className="acct-row">
+										<tr
+											key={account.accountNumber}
+											className="acct-row"
+											onClick={() => {
+												setCurrentAccount(account);
+											}}
+										>
 											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
+												<NavLink
+													to={`../info/${account.accountNumber}`}
 													className="link"
-												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</Link>
+												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</NavLink>
 											</td>
+											<td>{`${account.accountType}`}</td>
 											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.accountType}`}</Link>
-											</td>
-											<td>
-												<Link
+												<NavLink
 													className="link"
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.accountNumber}`}</Link>
+													to={`../info/${account.accountNumber}`}
+												>{`${account.accountNumber}`}</NavLink>
+											</td>
+											<td>{`${account.accountStatus}`}</td>
+
+											<td>{formatPhoneNumber(account.demographics.phone)}</td>
+											<td>
+												{`${account.demographics.address.addressLine1.toUpperCase()}`}
 											</td>
 											<td>
-												{" "}
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.accountStatus}`}</Link>
+												{`${account.demographics.address.city.toUpperCase()}`}
 											</td>
 											<td>
-												<Link to={`../info/:${account.accountNumber}`}>
-													{formatPhoneNumber(account.demographics.phone)}
-												</Link>
-											</td>
-											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.demographics.address.addressLine1.toUpperCase()}`}</Link>
-											</td>
-											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.demographics.address.city.toUpperCase()}`}</Link>
-											</td>
-											<td>
-												<Link
-													to={`../info/:${account.accountNumber}`}
-												>{`${account.demographics.address.state.toUpperCase()}`}</Link>
+												{`${account.demographics.address.state.toUpperCase()}`}
 											</td>
 											<td>
 												<input
@@ -145,7 +142,7 @@ const AccountSearchResults = () => {
 					</tfoot>
 				</table>
 			</section>
-			<AccountDetails />
+			<AccountDetails account={currentAccount} />
 		</>
 	);
 };

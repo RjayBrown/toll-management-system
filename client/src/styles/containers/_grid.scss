@@ -20,7 +20,14 @@
 			padding: 0.5rem;
 		}
 
-		th,
+		& .acct-row {
+			z-index: 10;
+			&.on {
+				background-color: #fff7c2;
+			}
+		}
+
+		& th,
 		tfoot {
 			padding: 0.5rem;
 			background-color: var(--grey);
@@ -35,9 +42,6 @@
 
 		& tbody tr {
 			text-align: left;
-			&.on {
-				background-color: #fff7c2;
-			}
 
 			.link {
 				color: var(--light-blue);
@@ -52,7 +56,7 @@
 			width: 100%;
 		}
 
-		tfoot th {
+		& tfoot th {
 			padding: 0;
 		}
 
