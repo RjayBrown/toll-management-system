@@ -5,44 +5,44 @@ const AdminNavbar = () => {
 	return (
 		<nav className="flex__row nav__secondary">
 			<NavLink
-				to="/dashboard/admin"
+				to="."
 				end
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Admin Home
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/employee-results"
+				to="employee-results"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Employee Search List
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/account-results"
+				to="account-results"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Search List
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/info"
+				to="info"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/service-request"
+				to="service-request"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Service Request
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/toll-dispute"
+				to="toll-dispute"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Toll Dispute
 			</NavLink>
 			<NavLink
-				to="/dashboard/admin/violation-dispute"
+				to="violation-dispute"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Violation Dispute

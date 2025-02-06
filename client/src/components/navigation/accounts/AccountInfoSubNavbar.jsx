@@ -2,18 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const AccountInfoSubNavbar = () => {
-	const account = { accountNumber: "" };
+	const account = { accountNumber: 0 };
 	return (
 		<nav className="flex__row subnav__secondary">
 			<NavLink
-				to="."
+				to={`details?account=${account.accountNumber}`}
 				end
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Details
 			</NavLink>
 			<NavLink
-				to={`../info/:${account.accountNumber}/conversion`}
+				to={`details/conversion?account=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Conversion

@@ -1,4 +1,11 @@
 // BUTTON GROUPS
+.btn {
+	&__home {
+		display: block;
+		text-align: center;
+		margin: 1rem;
+	}
+}
 .btns {
 	justify-content: start;
 	align-items: self-end;

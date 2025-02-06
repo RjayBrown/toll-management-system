@@ -17,44 +17,45 @@ const AccountNavbar = () => {
 			>
 				Account Search List
 			</NavLink>
+			{/* useLocation() hook - maintain active state for each path when navigating in sub-navbars */}
 			<NavLink
-				to="info"
+				to="info/details"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
 			</NavLink>
 			<NavLink
-				to="financials"
+				to="info/financials"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Financials
 			</NavLink>
 			<NavLink
-				to="service-request"
+				to="info/service-request"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Service Request
 			</NavLink>
 			<NavLink
-				to="retail-tag-search"
+				to="info/retail-tag-search"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Retail Tag Search
 			</NavLink>
 			<NavLink
-				to="invoices"
+				to="info/invoices"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Invoices
 			</NavLink>
 			<NavLink
-				to="violations"
+				to="info/violations"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Violation
 			</NavLink>
 			<NavLink
-				to="history"
+				to="info/history"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				History

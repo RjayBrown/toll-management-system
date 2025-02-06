@@ -1,13 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import AdminNavbar from "../../components/navigation/admin/AdminNavbar";
 
 const AdminDashboard = () => {
+	const [accounts, setAccounts] = useState(null);
+
 	return (
 		<>
 			<AdminNavbar />
-			<Outlet />
+			<Outlet context={[accounts, setAccounts]} />
 		</>
 	);
 };

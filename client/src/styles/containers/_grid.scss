@@ -4,7 +4,7 @@
 	grid-template-rows: auto;
 
 	&__account {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 		border: 1px solid var(--grey);
 		padding: 1rem 0;
 	}

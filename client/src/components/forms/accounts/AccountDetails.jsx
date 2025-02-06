@@ -73,7 +73,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="big"
 						name="paymentMethod"
-						value={account ? account.paymentMethod : undefined}
+						value={account ? account.payMethod : undefined}
 						readOnly={true}
 					/>
 				</label>

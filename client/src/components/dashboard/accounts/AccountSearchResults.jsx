@@ -3,7 +3,7 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { NavLink, useOutletContext } from "react-router-dom";
 
 import AccountDetails from "../../forms/accounts/AccountDetails";
-import Loading from "../Loading";
+import Loading from "../../global/Loading";
 
 import fetchData from "../../../api";
 
@@ -16,13 +16,10 @@ const AccountSearchResults = () => {
 		const getAccounts = async () => {
 			const response = await fetchData.accounts();
 			setAccounts(response.accounts);
+			setIsLoading(false);
 		};
 
 		getAccounts();
-
-		setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
 	}, []);
 
 	useEffect(() => {
@@ -90,7 +87,7 @@ const AccountSearchResults = () => {
 										>
 											<td>
 												<NavLink
-													to={`../info/${account.accountNumber}`}
+													to={`../info/details?account=${account.accountNumber}`}
 													className="link"
 												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</NavLink>
 											</td>
@@ -98,7 +95,7 @@ const AccountSearchResults = () => {
 											<td>
 												<NavLink
 													className="link"
-													to={`../info/${account.accountNumber}`}
+													to={`../info/details?account=${account.accountNumber}`}
 												>{`${account.accountNumber}`}</NavLink>
 											</td>
 											<td>{`${account.accountStatus}`}</td>

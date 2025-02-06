@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-	useNavigate,
-	useOutletContext,
-	useSearchParams,
-} from "react-router-dom";
-
-import SearchButton from "../../buttons/SearchButton";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const AccountSearch = () => {
 	const [accounts, setAccounts] = useOutletContext();
@@ -34,12 +28,11 @@ const AccountSearch = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// search logic
 		const fields = Object.keys(accountFormData);
-		// console.log(fields);
 		fields.forEach((field) => {
 			if (accountFormData[field]) {
-				// setParam[field]
+				// search logic
+
 				console.log("form submitted!");
 				console.log({ [field]: accountFormData[field] });
 			}
@@ -90,7 +83,14 @@ const AccountSearch = () => {
 				<input type="text" name="invoiceNumber" onChange={handleChange} />
 			</label>
 			{/* add functionality for fetch and navigate to search results page when clicked */}
-			<SearchButton />
+			<button
+				className="search__dashboard"
+				onClick={() => {
+					setSearchParams();
+				}}
+			>
+				Go
+			</button>
 		</form>
 	);
 };

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SearchButton from "../../buttons/SearchButton";
 
 const AdminEmployeeSearch = () => {
 	const [adminFormData, setAdminFormData] = useState({
@@ -68,7 +67,7 @@ const AdminEmployeeSearch = () => {
 					onChange={handleChange}
 				/>
 			</label>
-			<SearchButton />
+			<button className="search__dashboard">Go</button>
 		</form>
 	);
 };
