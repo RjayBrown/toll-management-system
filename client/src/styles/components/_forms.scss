@@ -7,7 +7,12 @@ form {
 		text-align: end;
 	}
 
+	& input {
+		height: 1.5rem;
+	}
+
 	& input,
+	select,
 	textarea {
 		&.big {
 			width: 10rem;
@@ -72,6 +77,9 @@ form {
 
 		&__header {
 			margin: 0 1.25rem;
+			& input {
+				height: auto;
+			}
 		}
 
 		&__search {
@@ -124,6 +132,15 @@ form {
 				&:hover {
 					box-shadow: none;
 				}
+			}
+		}
+
+		&__details {
+			justify-content: space-evenly;
+
+			& label {
+				width: 20%;
+				justify-content: end;
 			}
 		}
 	}

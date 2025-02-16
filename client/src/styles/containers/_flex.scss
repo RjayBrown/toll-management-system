@@ -4,6 +4,10 @@
 		flex-flow: row nowrap;
 		justify-content: center;
 		align-items: center;
+
+		&.start {
+			align-items: start;
+		}
 	}
 
 	&__col {
@@ -11,5 +15,9 @@
 		flex-flow: column nowrap;
 		justify-content: center;
 		align-items: center;
+
+		&.start {
+			align-items: start;
+		}
 	}
 }

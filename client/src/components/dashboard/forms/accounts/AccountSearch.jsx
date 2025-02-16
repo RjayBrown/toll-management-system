@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useSearchParams, useOutletContext } from "react-router-dom";
 
 const AccountSearch = () => {
 	const [accounts, setAccounts] = useOutletContext();
@@ -82,11 +82,11 @@ const AccountSearch = () => {
 				<span>Invoice Number:</span>
 				<input type="text" name="invoiceNumber" onChange={handleChange} />
 			</label>
-			{/* add functionality for fetch and navigate to search results page when clicked */}
+			{/* add functionality to fetch and navigate to search results page when clicked */}
 			<button
 				className="search__dashboard"
 				onClick={() => {
-					setSearchParams();
+					fetchAndNavigate();
 				}}
 			>
 				Go

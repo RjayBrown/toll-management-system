@@ -1,7 +1,7 @@
 import React from "react";
 
-const SidebarButton = ({ children }) => {
+const SideModalButton = ({ children }) => {
 	return <button className="modal">{children}</button>;
 };
 
-export default SidebarButton;
+export default SideModalButton;

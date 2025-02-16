@@ -1,57 +1,56 @@
 import { useEffect, useState } from "react";
-import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { NavLink, useOutletContext } from "react-router-dom";
 
-import AccountDetails from "../../forms/accounts/AccountDetails";
+import AccountDetails from "../forms/accounts/AccountDetails";
 import Loading from "../../global/Loading";
 
 import fetchData from "../../../api";
 
 const AccountSearchResults = () => {
-	const [accounts, setAccounts] = useOutletContext(null);
+	const [accounts, setAccounts] = useOutletContext();
 	const [currentAccount, setCurrentAccount] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		const getAccounts = async () => {
-			const response = await fetchData.accounts();
-			setAccounts(response.accounts);
-			setIsLoading(false);
-		};
-
-		getAccounts();
-	}, []);
-
-	useEffect(() => {
-		const rows = document.querySelectorAll(".acct-row");
-		rows.forEach((row, i, rows) => {
-			row.addEventListener("click", () => {
-				row.classList.add("on");
-			});
-		});
-	}, [accounts]);
-
 	const formatPhoneNumber = (nums) => {
-		const areaCode = nums
-			.toString()
-			.split("")
-			.filter((num, i) => i < 3)
-			.join("");
-		const first3 = nums
-			.toString()
-			.split("")
-			.filter((num, i) => i >= 3 && i < 6)
-			.join("");
-		const last4 = nums
-			.toString()
-			.split("")
-			.filter((num, i) => i >= 6 && i <= 9)
-			.join("");
+		const splitByIndex = (arr, startIndex, endIndex = arr.length) => {
+			return arr.toString().split("").slice(startIndex, endIndex).join("");
+		};
+		const areaCode = splitByIndex(nums, 0, 3);
+		const first3 = splitByIndex(nums, 3, 6);
+		const last4 = splitByIndex(nums, 6);
 
 		return `(${areaCode}) ${first3}-${last4}`;
 	};
 
-	/* NEED TO ADD ROW HIGHLIGHT STYLES */
+	useEffect(() => {
+		const getMatchingAccounts = async () => {
+			const response = await fetchData.accounts(null, null);
+			// setTimeout(() => {
+			// 	setAccounts(response.accounts);
+			// 	setIsLoading(false);
+			// }, 1000);
+			setAccounts(response.accounts);
+			setIsLoading(false);
+		};
+
+		getMatchingAccounts();
+	}, []);
+
+	useEffect(() => {
+		// fix bug - only highlight selected row
+		const rows = document.querySelectorAll(".acct-row");
+		rows.forEach((row, i, rows) => {
+			row.addEventListener("click", () => {
+				if (!row.classList.contains("on")) {
+					row.classList.add("on");
+					console.log("on");
+				} else {
+					row.className = "acct-row";
+					console.log("off");
+				}
+			});
+		});
+	}, []);
 
 	return isLoading ? (
 		<Loading />
@@ -70,7 +69,7 @@ const AccountSearchResults = () => {
 							<th>Address Line 1</th>
 							<th>City</th>
 							<th>Zip Code</th>
-							<th>NYS Susp</th>
+							<th>Reg Susp</th>
 							<th>OOS Hold</th>
 						</tr>
 					</thead>
@@ -87,7 +86,7 @@ const AccountSearchResults = () => {
 										>
 											<td>
 												<NavLink
-													to={`../info/details?account=${account.accountNumber}`}
+													to={`../info/general?accountNumber=${account.accountNumber}`}
 													className="link"
 												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</NavLink>
 											</td>
@@ -95,7 +94,7 @@ const AccountSearchResults = () => {
 											<td>
 												<NavLink
 													className="link"
-													to={`../info/details?account=${account.accountNumber}`}
+													to={`../info/general?accountNumber=${account.accountNumber}`}
 												>{`${account.accountNumber}`}</NavLink>
 											</td>
 											<td>{`${account.accountStatus}`}</td>
@@ -129,14 +128,7 @@ const AccountSearchResults = () => {
 							  })
 							: null}
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colSpan={10}>
-								<TiArrowSortedUp />
-								<TiArrowSortedDown />
-							</td>
-						</tr>
-					</tfoot>
+					<tfoot></tfoot>
 				</table>
 			</section>
 			<AccountDetails account={currentAccount} />

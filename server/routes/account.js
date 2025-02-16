@@ -4,7 +4,8 @@ import { accountController } from "../controllers/account.js";
 const router = express.Router();
 
 // modify to return list of accounts by provided search parameters
-router.get("/search", accountController.getAccount);
+// router.get("/search/:params", accountController.getAccounts);
+router.post("/search", accountController.getAccounts);
 router.put("/", accountController.updateAccountInfo);
 
 // admin only

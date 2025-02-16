@@ -1,7 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const AccountNavbar = () => {
+	const location = useLocation();
+	// console.log(location.pathname);
+
 	return (
 		<nav className="flex__row nav__secondary">
 			<NavLink
@@ -17,9 +20,11 @@ const AccountNavbar = () => {
 			>
 				Account Search List
 			</NavLink>
-			{/* useLocation() hook - maintain active state for each path when navigating in sub-navbars */}
 			<NavLink
-				to="info/details"
+				to={
+					// location.pathname === "dashboard/accounts/info/general" ? "." : "info"
+					"info"
+				}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
@@ -40,7 +45,7 @@ const AccountNavbar = () => {
 				to="info/retail-tag-search"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
-				Retail Tag Search
+				OTG Tag Search
 			</NavLink>
 			<NavLink
 				to="info/invoices"

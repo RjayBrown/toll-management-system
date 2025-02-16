@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import LoginButton from "../buttons/LoginButton";
+import LoginButton from "../../buttons/LoginButton";
 
 const LoginForm = () => {
 	const [loginFormData, setLoginFormData] = useState({

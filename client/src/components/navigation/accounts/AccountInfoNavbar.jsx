@@ -2,55 +2,55 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const AccountInfoNavbar = () => {
-	const account = { accountNumber: 0 };
+	const account = { accountNumber: 0 }; // replace with account returned from backend
 
 	return (
 		<nav className="flex__row subnav__primary">
 			<NavLink
-				to={`details?account=${account.accountNumber}`}
-				end
+				to={`general?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Details
 			</NavLink>
 			<NavLink
-				to={`notes?account=${account.accountNumber}`}
+				to={`notes?accountNumber=${account.accountNumber}`}
+				end
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Notes
 			</NavLink>
 			<NavLink
-				to={`contacts?account=${account.accountNumber}`}
+				to={`contacts?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Contacts
 			</NavLink>
 			<NavLink
-				to={`address?account=${account.accountNumber}`}
+				to={`address?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Addresses
 			</NavLink>
 			<NavLink
-				to={`payment?account=${account.accountNumber}`}
+				to={`payment?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Payment Info
 			</NavLink>
 			<NavLink
-				to={`vehicles?account=${account.accountNumber}`}
+				to={`vehicles?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Vehicles
 			</NavLink>
 			<NavLink
-				to={`devices?account=${account.accountNumber}`}
+				to={`devices?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Devices
 			</NavLink>
 			<NavLink
-				to={`plans?account=${account.accountNumber}`}
+				to={`plans?accountNumber=${account.accountNumber}`}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Plans

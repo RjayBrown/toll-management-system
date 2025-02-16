@@ -1,10 +1,8 @@
 import React from "react";
 import { IoMdStar } from "react-icons/io";
-import { useSearchParams } from "react-router-dom";
-import SidebarButton from "../../buttons/SidebarButton";
+import SideModalButton from "../../../buttons/SideModalButton";
 
 const AccountDetails = ({ account }) => {
-	console.log(account);
 	const formatNum = (num) => {
 		const formatted = new Intl.NumberFormat("en-US", {
 			style: "currency",
@@ -24,7 +22,7 @@ const AccountDetails = ({ account }) => {
 					<span>Agency:</span>
 					<input
 						type="text"
-						className="big ff"
+						className="big"
 						name="agency"
 						value={account ? account.agency : undefined}
 						readOnly={true}
@@ -320,20 +318,10 @@ const AccountDetails = ({ account }) => {
 						readOnly={true}
 					/>
 				</label>
-				{/* <label className="flex__row" htmlFor="deviceDeposit">
-					<span>Device Dep:</span>
-					<input
-						type="text"
-						className="med"
-						name="deviceDeposit"
-						value={formatDate(1737664806655)}
-						readOnly={true}
-					/>
-				</label> */}
 			</form>
 			<form className="flex__col form__readonly">
 				<label className="flex__row" htmlFor="suspendedNY">
-					<span>Susp NY:</span>
+					<span>Reg Susp:</span>
 					<input
 						className="checkbox"
 						type="checkbox"
@@ -347,11 +335,11 @@ const AccountDetails = ({ account }) => {
 				</label>
 			</form>
 			<div className="flex__col btns">
-				<SidebarButton>Toll History</SidebarButton>
-				<SidebarButton>Financials</SidebarButton>
-				<SidebarButton>Toll Bills</SidebarButton>
-				<SidebarButton>Violations</SidebarButton>
-				<SidebarButton>Add Note</SidebarButton>
+				<SideModalButton>Toll History</SideModalButton>
+				<SideModalButton>Financials</SideModalButton>
+				<SideModalButton>Toll Bills</SideModalButton>
+				<SideModalButton>Violations</SideModalButton>
+				<SideModalButton>Add Note</SideModalButton>
 			</div>
 		</section>
 	);

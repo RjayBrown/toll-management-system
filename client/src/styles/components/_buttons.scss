@@ -4,6 +4,12 @@
 		display: block;
 		text-align: center;
 		margin: 1rem;
+
+		& a {
+			display: inline-block;
+			width: 10rem;
+			margin: 0.5rem;
+		}
 	}
 }
 .btns {
@@ -29,7 +35,8 @@
 	}
 }
 
-button {
+button,
+a {
 	transition: all 0.15s ease-in;
 	border-radius: 15px;
 
@@ -56,14 +63,14 @@ button {
 			background-color: var(--primary-blue);
 			color: var(--primary-light);
 			border: 3px solid var(--primary-blue);
-			padding: 0 0.5rem;
+			padding: 0 0.25rem;
 
 			&:hover {
 				background-color: var(--light-blue);
 				border: 3px solid var(--light-blue);
 			}
 			&:active {
-				transform: scale(0.95);
+				transform: scale(0.975);
 				border: 3px solid var(--primary-dark);
 			}
 		}

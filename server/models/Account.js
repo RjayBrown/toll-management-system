@@ -31,6 +31,7 @@ const accountSchema = new mongoose.Schema(
 		securityQuestion: String,
 		securityAnswer: String,
 		payMethod: { type: String, required: true },
+		rebillAmount: Number,
 		vehicles: [
 			{
 				licensePlate: { type: String, required: true },

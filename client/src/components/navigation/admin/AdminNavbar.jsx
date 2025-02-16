@@ -24,7 +24,7 @@ const AdminNavbar = () => {
 				Account Search List
 			</NavLink>
 			<NavLink
-				to="info"
+				to="../accounts/info"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Account Info
