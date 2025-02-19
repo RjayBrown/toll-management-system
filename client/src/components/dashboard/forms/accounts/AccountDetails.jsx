@@ -2,19 +2,9 @@ import React from "react";
 import { IoMdStar } from "react-icons/io";
 import SideModalButton from "../../../buttons/SideModalButton";
 
+import { formatCurrency, formatDate } from "../../../../util";
+
 const AccountDetails = ({ account }) => {
-	const formatNum = (num) => {
-		const formatted = new Intl.NumberFormat("en-US", {
-			style: "currency",
-			currency: "USD",
-		}).format(num);
-
-		return num >= 0 ? formatted : `(${formatted})`;
-	};
-
-	const formatDate = (date) => {
-		return new Date(date).toLocaleString().split(",")[0];
-	};
 	return (
 		<section className="grid grid__account card" tabIndex={0}>
 			<form className="flex__col form__readonly">
@@ -85,7 +75,7 @@ const AccountDetails = ({ account }) => {
 							account
 								? `${
 										account.securityQuestion
-								  }: ${account.securityAnswer.toUpperCase()}`
+								  } ${account.securityAnswer.toUpperCase()}`
 								: undefined
 						}
 						style={{ resize: "vertical" }}
@@ -147,7 +137,6 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="numOfTolls"
-						// Adjust schema and logic for accurate open tolls
 						value={
 							account
 								? account.tolls.filter((toll) => toll.tollStatus === "OPEN")
@@ -180,7 +169,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="accountBalance"
-						value={formatNum(account ? account.accountBalance : 0)}
+						value={formatCurrency(account ? account.accountBalance : 0)}
 						readOnly={true}
 					/>
 				</label>
@@ -190,7 +179,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="tollBillBalance"
-						value={formatNum(account ? account.tollBillBalance : 0)}
+						value={formatCurrency(account ? account.tollBillBalance : 0)}
 						readOnly={true}
 					/>
 				</label>
@@ -200,7 +189,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="violationBalance"
-						value={formatNum(account ? account.violationBalance : 0)}
+						value={formatCurrency(account ? account.violationBalance : 0)}
 						readOnly={true}
 					/>
 				</label>
@@ -210,7 +199,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="violationFees"
-						value={formatNum(account ? account.violationFees : 0)}
+						value={formatCurrency(account ? account.violationFees : 0)}
 						readOnly={true}
 					/>
 				</label>
@@ -220,7 +209,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="billOverpayment"
-						value={formatNum(account ? account.billOverpayment : 0)}
+						value={formatCurrency(account ? account.billOverpayment : 0)}
 						readOnly={true}
 					/>
 				</label>
@@ -230,7 +219,7 @@ const AccountDetails = ({ account }) => {
 						type="text"
 						className="small"
 						name="deviceDeposit"
-						value={formatNum(
+						value={formatCurrency(
 							account
 								? account.devices.every((device) => device.deposit === 16)
 									? 16

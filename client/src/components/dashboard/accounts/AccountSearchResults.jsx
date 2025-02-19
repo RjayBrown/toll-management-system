@@ -7,8 +7,8 @@ import Loading from "../../global/Loading";
 import fetchData from "../../../api";
 
 const AccountSearchResults = () => {
-	const [accounts, setAccounts] = useOutletContext();
-	const [currentAccount, setCurrentAccount] = useState(null);
+	const [accounts, setAccounts] = useState(null);
+	const [currentAccount, setCurrentAccount] = useOutletContext();
 	const [isLoading, setIsLoading] = useState(true);
 
 	const formatPhoneNumber = (nums) => {
@@ -30,6 +30,7 @@ const AccountSearchResults = () => {
 			// 	setIsLoading(false);
 			// }, 1000);
 			setAccounts(response.accounts);
+			console.log(accounts);
 			setIsLoading(false);
 		};
 
@@ -75,7 +76,7 @@ const AccountSearchResults = () => {
 					</thead>
 					<tbody>
 						{accounts
-							? accounts.map((account) => {
+							? accounts.map((account, i) => {
 									return (
 										<tr
 											key={account.accountNumber}
@@ -86,7 +87,7 @@ const AccountSearchResults = () => {
 										>
 											<td>
 												<NavLink
-													to={`../info/general?accountNumber=${account.accountNumber}`}
+													to={`../info/general?accountNumber=${accounts[i].accountNumber}`}
 													className="link"
 												>{`${account.demographics.firstName.toUpperCase()} ${account.demographics.lastName.toUpperCase()}`}</NavLink>
 											</td>
@@ -94,7 +95,7 @@ const AccountSearchResults = () => {
 											<td>
 												<NavLink
 													className="link"
-													to={`../info/general?accountNumber=${account.accountNumber}`}
+													to={`../info/general?accountNumber=${accounts[i].accountNumber}`}
 												>{`${account.accountNumber}`}</NavLink>
 											</td>
 											<td>{`${account.accountStatus}`}</td>

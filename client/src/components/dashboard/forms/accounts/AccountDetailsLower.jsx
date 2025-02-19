@@ -1,7 +1,13 @@
-import React from "react";
+import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+
+import { formatCurrency, formatDate } from "../../../../util";
 
 const AccountDetailsLower = () => {
-	const account = null;
+	const [currentAccount, setCurrentAccount] = useOutletContext();
+
+	console.log(currentAccount);
+
 	return (
 		<section className="flex__col details card" tabIndex={0}>
 			<h5 className="title">Account Details</h5>
@@ -14,7 +20,7 @@ const AccountDetailsLower = () => {
 							type="email"
 							className="big"
 							name="email"
-							value={account ? undefined : undefined}
+							value={currentAccount.demographics.email}
 						/>
 					</label>
 					<label className="flex__row" htmlFor="correspondence">
@@ -23,7 +29,7 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="small"
 							name="correspondence"
-							value={account ? undefined : undefined}
+							value={currentAccount.corrDeliveryMode}
 						>
 							<option value="email">EMAIL</option>
 							<option value="mail">MAIL</option>
@@ -35,7 +41,7 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="small"
 							name="statement"
-							value={account ? undefined : undefined}
+							value={currentAccount.stmtDeliveryMode}
 						>
 							<option value="email">EMAIL</option>
 							<option value="mail">MAIL</option>
@@ -47,7 +53,7 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="small"
 							name="statement"
-							value={account ? undefined : undefined}
+							value={currentAccount.stmtFrequency}
 						>
 							<option value="monthly">MONTHLY</option>
 							<option value="bi-monthly">BI-MONTHLY</option>
@@ -64,16 +70,17 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="big"
 							name="pay-type"
-							value={account ? undefined : undefined}
+							value={currentAccount.payMethod}
+							readOnly={true}
 						/>
 					</label>
 					<label className="flex__row" htmlFor="rebill-amt">
 						<span>Rebill Amt:</span>
 						<input
-							type="number"
+							type="text"
 							className="small"
 							name="rebill-amt"
-							value={account ? undefined : 25}
+							value={formatCurrency(currentAccount.rebillAmount)}
 							readOnly={true}
 						/>
 					</label>
@@ -83,16 +90,20 @@ const AccountDetailsLower = () => {
 							type="number"
 							className="small"
 							name="set-rebill"
-							value={account ? undefined : undefined}
+							value={undefined}
 						/>
 					</label>
 					<label className="flex__row" htmlFor="rebill-thrsh">
 						<span>Rebill Thrsh Amt:</span>
 						<input
-							type="number"
+							type="text"
 							className="small"
 							name="rebill-thrsh"
-							value={account ? undefined : undefined}
+							value={
+								currentAccount.rebillAmount < 50
+									? formatCurrency(10)
+									: formatCurrency(currentAccount.rebillAmount * 0.25)
+							}
 							readOnly={true}
 						/>
 					</label>
@@ -107,7 +118,7 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="big"
 							name="coll-status"
-							value={account ? undefined : undefined}
+							value={undefined}
 							readOnly={true}
 						/>
 					</label>
@@ -117,7 +128,7 @@ const AccountDetailsLower = () => {
 							type="number"
 							className="small"
 							name="rvkw"
-							value={account ? undefined : undefined}
+							value={undefined}
 							readOnly={true}
 						/>
 					</label>
@@ -127,7 +138,7 @@ const AccountDetailsLower = () => {
 							type="number"
 							className="small"
 							name="rvkf"
-							value={account ? undefined : undefined}
+							value={undefined}
 							readOnly={true}
 						/>
 					</label>
@@ -137,7 +148,7 @@ const AccountDetailsLower = () => {
 							type="number"
 							className="small"
 							name="coll-date"
-							value={account ? undefined : undefined}
+							value={undefined}
 							readOnly={true}
 						/>
 					</label>
@@ -152,17 +163,17 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="big"
 							name="challenge-q"
-							value={account ? undefined : undefined}
+							value={currentAccount.securityQuestion}
 							readOnly={true}
 						/>
 					</label>
 					<label className="flex__row" htmlFor="challenge-a">
 						<span>Challenge Ans:</span>
 						<input
-							type="number"
+							type="text"
 							className="small"
 							name="challenge-a"
-							value={account ? undefined : undefined}
+							value={currentAccount.securityAnswer.toUpperCase()}
 							readOnly={true}
 						/>
 					</label>
@@ -172,7 +183,7 @@ const AccountDetailsLower = () => {
 							type="text"
 							className="small"
 							name="alerts"
-							value={account ? undefined : undefined}
+							value={currentAccount.mobileAlerts}
 						>
 							<option value="pending">PENDING</option>
 							<option value="opt-in">OPT-IN</option>
@@ -180,12 +191,12 @@ const AccountDetailsLower = () => {
 						</select>
 					</label>
 					<label className="flex__row" htmlFor="alerts">
-						<span>Mobile Alerts:</span>
+						<span>Toll Email Alerts:</span>
 						<select
 							type="text"
 							className="small"
 							name="alerts"
-							value={account ? undefined : undefined}
+							value={currentAccount.tollEmailAlerts}
 						>
 							<option value="pending">PENDING</option>
 							<option value="opt-in">OPT-IN</option>

@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AccountInfoNavbar = () => {
-	const account = { accountNumber: 0 }; // replace with account returned from backend
+const AccountInfoNavbar = ({ account }) => {
+	// console.log(account);
 
 	return (
 		<nav className="flex__row subnav__primary">

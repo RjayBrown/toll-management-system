@@ -32,6 +32,11 @@ const accountSchema = new mongoose.Schema(
 		securityAnswer: String,
 		payMethod: { type: String, required: true },
 		rebillAmount: Number,
+		corrDeliveryMode: String,
+		stmtDeliveryMode: String,
+		stmtFrequency: String,
+		mobileAlerts: Boolean,
+		tollEmailAlerts: Boolean,
 		vehicles: [
 			{
 				licensePlate: { type: String, required: true },
