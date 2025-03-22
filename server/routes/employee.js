@@ -3,8 +3,9 @@ import { employeeController } from "../controllers/employee.js";
 
 const router = express.Router();
 
+// admin only
 router.get("/search", employeeController.getEmployee);
-router.post("/", employeeController.addEmployee);
+router.post("/register", employeeController.addEmployee);
 router.put("/", employeeController.updateEmployeeInfo);
 router.delete("/", employeeController.deleteEmployee);
 

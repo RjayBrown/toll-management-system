@@ -1,0 +1,91 @@
+export const accountDetails = {
+	contacts: {
+		title: "Contacts",
+		details: [
+			{ label: "Primary", type: "checkbox", data: "primary" },
+			{ label: "Last Name", type: "text", data: "lastName" },
+			{ label: "First Name", type: "text", data: "firstName" },
+			{ label: "MI", type: "text", data: "middleInitial" },
+			{ label: "Title", type: "text", data: "title" },
+			{ label: "Primary Phone", type: "phone", data: "primaryPhone" },
+			{ label: "Cell Phone", type: "phone", data: "cellPhone" },
+		],
+	},
+	address: {
+		title: "Address",
+		details: [
+			{ label: "Address Type", type: "text", data: "addressType" },
+			{ label: "Address Line 1", type: "text", data: "addressLine1" },
+			{ label: "Address Line 2", type: "text", data: "addressLine2" },
+			{ label: "City", type: "text", data: "city" },
+			{ label: "State", type: "text", data: "state" },
+			{ label: "Zip Code", type: "text", data: "zip" },
+			{ label: "Province", type: "text", data: "province" },
+			{ label: "Postal Code", type: "text", data: "postalCode" },
+			{ label: "Country", type: "text", data: "country" },
+		],
+	},
+	notes: {
+		title: "Notes",
+		details: [
+			{ label: "Note Type", type: "text", data: "type" },
+			{ label: "Note Sub-Type", type: "text", data: "subType" },
+			{ label: "Date Created", type: "date", data: "dateCreated" },
+			{ label: "Created By", type: "text", data: "createdBy" },
+			{ label: "Description", type: "text", data: "description" },
+		],
+	},
+	vehicles: {
+		title: "Vehicles",
+		details: [
+			{ label: "License Plate", type: "text", data: "licensePlate" },
+			{ label: "Current Vehicle", type: "checkbox", data: "current" },
+			{ label: "State", type: "text", data: "state" },
+			{ label: "Vehicle Type", type: "text", data: "type" },
+			{ label: "Year", type: "text", data: "year" },
+			{ label: "Make", type: "text", data: "make" },
+			{ label: "Model", type: "text", data: "model" },
+			{ label: "Resident Plan", type: "text", data: "residentPlan" },
+			{ label: "Susp Status", type: "checkbox", data: "suspended" },
+			{ label: "Date Modified", type: "date", data: "dateModified" },
+		],
+	},
+	devices: {
+		title: "Devices",
+		details: [
+			{ label: "Device Number", type: "text", data: "deviceNumber" },
+			{ label: "Device Status", type: "text", data: "status" },
+			{ label: "Device Type", type: "text", data: "type" },
+			{ label: "Activation Date", type: "date", data: "activationDate" },
+			{ label: "Deposit", type: "number", data: "deposit" },
+		],
+	},
+	plans: {
+		title: "Plans",
+		details: [
+			{ label: "Plan Name", type: "text", data: "planName" },
+			{ label: "Plan Status", type: "text", data: "planStatus" },
+			{ label: "Assigned Device", type: "text", data: "deviceNumber" },
+			{ label: "Start Date", type: "date", data: "startDate" },
+			{ label: "End Date", type: "date", data: "endDate" },
+		],
+	},
+
+	tolls: {
+		title: "Tolls",
+		details: [
+			{ label: "Plate #", type: "text", data: "licensePlate" },
+			{ label: "Violation Number", type: "text", data: "violationNumber" },
+			{ label: "Invoice Number", type: "text", data: "invoiceNumber" },
+			{ label: "Transaction Date", type: "date", data: "transactionDate" },
+			{ label: "Mail Date", type: "date", data: "postedDate" },
+			{ label: "Violation Date", type: "date", data: "violationDate" },
+			{ label: "Amount Payable", type: "text", data: "amountPayable" },
+			{ label: "Toll Due", type: "text", data: "tollAmount" },
+			{ label: "Fee Due", type: "text", data: "violationFee" },
+			{ label: "Amount Paid", type: "text", data: "amountPaid" },
+			{ label: "Toll Status", type: "text", data: "tollStatus" },
+			{ label: "Disputed", type: "checkbox", data: "disputed" },
+		],
+	},
+};

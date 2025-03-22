@@ -1,83 +1,6 @@
 // BUTTON GROUPS
 .btn {
-	&__home {
-		display: block;
-		text-align: center;
-		margin: 1rem;
-
-		& a {
-			display: inline-block;
-			width: 10rem;
-			margin: 0.5rem;
-		}
-	}
-}
-.btns {
-	justify-content: start;
-	align-items: self-end;
-	gap: 1rem;
-
-	& .modal {
-		border-radius: 0.25rem;
-		justify-self: end;
-		margin: 0 1.5rem;
-		width: max-content;
-		text-align: end;
-
-		background-color: var(--primary-blue);
-		color: var(--primary-light);
-		padding: 0 0.5rem 0 1.5rem;
-
-		&:hover {
-			background-color: var(--rich-blue);
-			color: var(--primary-light);
-		}
-	}
-}
-
-button,
-a {
-	transition: all 0.15s ease-in;
-	border-radius: 15px;
-
-	// SEARCH BUTTON
-	&.search {
-		&__top,
-		&__dashboard {
-			&:active {
-				transform: scale(0.975);
-			}
-		}
-
-		&__top {
-			margin-left: 1px;
-			border-radius: 1px;
-			border: 1px solid var(--primary-light);
-
-			&:hover {
-				background-color: var(--grey);
-			}
-		}
-
-		&__dashboard {
-			background-color: var(--primary-blue);
-			color: var(--primary-light);
-			border: 3px solid var(--primary-blue);
-			padding: 0 0.25rem;
-
-			&:hover {
-				background-color: var(--light-blue);
-				border: 3px solid var(--light-blue);
-			}
-			&:active {
-				transform: scale(0.975);
-				border: 3px solid var(--primary-dark);
-			}
-		}
-	}
-
-	// LOGIN BUTTON
-	&.login {
+	&__login {
 		padding: 0.25rem 0.5rem;
 		margin: 1rem auto;
 		background-color: var(--primary-light);
@@ -98,5 +21,75 @@ a {
 		}
 	}
 
-	// DASHBOARD BUTTONS
+	&__logout {
+		margin: 0 0.5rem 0 1px;
+		border-radius: 1px;
+		border: 2px solid var(--primary-blue);
+		background-color: var(--primary-blue);
+		color: var(--primary-light);
+
+		&:hover {
+			background-color: var(--rich-blue);
+			border: 2px solid var(--rich-blue);
+		}
+
+		&:active {
+			transform: scale(0.975);
+		}
+	}
+
+	&__home {
+		display: block;
+		text-align: center;
+		margin: 1rem;
+
+		& a {
+			display: inline-block;
+			width: 10rem;
+			margin: 0.5rem;
+
+			color: var(--primary-light);
+		}
+	}
+
+	&__sidenav {
+		border-radius: 0.25rem;
+		justify-self: end;
+		margin: 0 1.5rem;
+		width: max-content;
+		text-align: end;
+
+		background-color: var(--primary-blue);
+		color: var(--primary-light);
+		padding: 0 0.5rem 0 1.5rem;
+
+		&:hover {
+			background-color: var(--rich-blue);
+			color: var(--primary-light);
+		}
+	}
+
+	&__dashboard {
+		background-color: var(--primary-blue);
+		border: 3px solid var(--primary-blue);
+		color: var(--primary-light);
+
+		border-radius: 30px;
+		padding: 0 0.25rem;
+		margin: 0.25rem;
+
+		&:hover {
+			background-color: var(--light-blue);
+			border: 3px solid var(--light-blue);
+		}
+		&:active {
+			transform: scale(0.975);
+			border: 3px solid var(--primary-dark);
+		}
+	}
+}
+.btns {
+	justify-content: start;
+	align-items: self-end;
+	gap: 1rem;
 }

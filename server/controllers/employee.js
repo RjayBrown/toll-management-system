@@ -1,4 +1,5 @@
 import Employee from "../models/Employee.js";
+import bcrypt from "bcrypt";
 
 export const employeeController = {
 	getEmployee: async (req, res) => {
@@ -14,23 +15,38 @@ export const employeeController = {
 		}
 	},
 	addEmployee: async (req, res) => {
-		const data = req.body;
 		try {
-			if (!data) {
-				console.log("Invalid employee data");
+			const { employeeID, password, isAdmin } = req.body;
+			if (!employeeID || !password) {
 				return res
-					.status(404)
+					.status(422) // server recognizes req format but data not validated
 					.json({
 						success: false,
-						message: "Invalid employee data: Data not found",
+						message: "employeeID, password and admin status are required",
 					});
 			}
-			const newEmployee = new Employee(data);
-			await newEmployee.save();
-			console.log("Added Employee");
-			return res.status(201).json({ success: true, employee: newEmployee });
+
+			if (await Employee.findOne({ employeeID })) {
+				return res
+					.status(409) // data conflict
+					.json({ success: false, message: "EmployeeID already exists" });
+			}
+
+			const hashedPassword = await bcrypt.hash(password, 10);
+
+			const newEmployee = await Employee.create({
+				employeeID,
+				password: hashedPassword,
+				isAdmin,
+			});
+			return res.status(201).json({
+				success: true,
+				id: newEmployee._id,
+				employeeID: newEmployee.employeeID,
+				isAdmin: newEmployee.isAdmin,
+			});
 		} catch (error) {
-			console.log("Failed to add employee", error.message);
+			console.log("Failed to add employee"), error.message;
 			return res
 				.status(500)
 				.json({ success: false, message: `Server/Internal error ${error}` });

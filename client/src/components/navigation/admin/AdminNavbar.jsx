@@ -1,7 +1,6 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AdminNavbar = () => {
+export const AdminNavbar = () => {
 	return (
 		<nav className="flex__row nav__secondary">
 			<NavLink
@@ -12,22 +11,10 @@ const AdminNavbar = () => {
 				Admin Home
 			</NavLink>
 			<NavLink
-				to="employee-results"
+				to="employee-management"
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
-				Employee Search List
-			</NavLink>
-			<NavLink
-				to="account-results"
-				className={({ isActive }) => (isActive ? "selected" : null)}
-			>
-				Account Search List
-			</NavLink>
-			<NavLink
-				to="../accounts/info"
-				className={({ isActive }) => (isActive ? "selected" : null)}
-			>
-				Account Info
+				Employee Management
 			</NavLink>
 			<NavLink
 				to="service-request"
@@ -50,5 +37,3 @@ const AdminNavbar = () => {
 		</nav>
 	);
 };
-
-export default AdminNavbar;

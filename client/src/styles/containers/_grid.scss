@@ -9,7 +9,7 @@
 		padding: 1rem 0;
 	}
 
-	&__table.search-results {
+	&__table {
 		text-align: center;
 		width: 100%;
 		border-collapse: collapse;
@@ -20,10 +20,15 @@
 			padding: 0.5rem;
 		}
 
-		& .acct-row {
-			z-index: 10;
-			&.on {
+		& .table-row {
+			&.selected {
 				background-color: #fff7c2;
+			}
+		}
+
+		& th {
+			&:hover {
+				background-color: #c5cbdc;
 			}
 		}
 
@@ -53,12 +58,25 @@
 			}
 		}
 
-		& td input[disabled] {
+		& td input,
+		td input[disabled] {
 			width: 100%;
 		}
 
-		& tfoot th {
-			padding: 0;
+		& td textarea {
+			resize: vertical;
+			width: 100%;
+			margin: 0;
+			height: 1.3rem;
+			// background-color: var(--grey);
+			// border: 1px solid var(--dark-grey);
+			// color: black;
+		}
+
+		& tfoot {
+			& td {
+				background-color: var(--grey);
+			}
 		}
 
 		& svg {

@@ -1,115 +1,165 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-/* MAIN */
-import MainLayout from "./layouts/global/MainLayout";
-import MainDashboardLayout from "./layouts/global/MainDashboardLayout";
-import LoginForm from "./components/dashboard/forms/LoginForm";
-import DashboardHome from "./components/global/DashboardHome";
-import NotFound from "./components/global/NotFound";
+import { DashboardHomePage } from "./components/dashboard/pages/DashboardHomePage";
+import { NotFound } from "./components/global/NotFound";
 
-/* ACCOUNT DASHBOARD */
-import AccountDashboard from "./layouts/accounts/AccountDashboard";
-import AccountSearch from "./components/dashboard/forms/accounts/AccountSearch";
-import AccountSearchResults from "./components/dashboard/accounts/AccountSearchResults";
+/* AUTH/ROUTE PROTECTION */
+import { LoginPage } from "./components/dashboard/pages/LoginPage";
+import { Authenticator } from "./components/navigation/Authenticator";
+import { AdminAuthenticator } from "./components/navigation/AdminAuthenticator";
 
-import AccountInfoLayout from "./layouts/accounts/AccountInfoLayout";
-import AccountDetailsLayout from "./layouts/accounts/AccountDetailsLayout";
-import AccountNotesLayout from "./layouts/accounts/AccountNotesLayout";
-import AccountContactsLayout from "./layouts/accounts/AccountContactsLayout";
-// import AccountAddressesLayout from "./layouts/accounts/AccountAddressesLayout";
-// import AccountPaymentInfoLayout from "./layouts/accounts/AccountPaymentInfoLayout";
-// import AccountVehiclesLayout from "./layouts/accounts/AccountVehiclesLayout";
-// import AccountDevicesLayout from "./layouts/accounts/AccountDevicesLayout";
-// import AccountPlansLayout from "./layouts/accounts/AccountPlansLayout";
+/* LAYOUTS */
+import { AppLayout } from "./components/global/AppLayout";
+import { MainDashboardLayout } from "./components/dashboard/layouts/MainDashboardLayout";
+import { AccountDashboardLayout } from "./components/dashboard/layouts/AccountDashboardLayout";
+import { AdminDashboardLayout } from "./components/dashboard/layouts/AdminDashboardLayout";
+
+/* MAIN DASHBOARD */
+import { AccountSearchForm } from "./components/dashboard/forms/accounts/AccountSearchForm";
+import { AccountSearchResultsPage } from "./components/dashboard/pages/AccountSearchResultsPage";
+// import { OTGRegistrationForm } from "./components/dashboard/forms/accounts/OTGRegistrationForm";
+
+import { AccountInfoPage } from "./components/dashboard/pages/AccountInfoPage";
+import { AccountDetailsSection } from "./components/dashboard/sections/AccountDetailsSection";
+import { UpdateAccountDetails } from "./components/dashboard/forms/accounts/UpdateAccountDetails";
+import { NotesSection } from "./components/dashboard/sections/NotesSection";
+import { ContactsSection } from "./components/dashboard/sections/ContactsSection";
+import { AddressSection } from "./components/dashboard/sections/AddressSection";
+// import { PaymentDetailsSection } from "./components/dashboard/sections/PaymentDetailsSection";
+import { VehiclesSection } from "./components/dashboard/sections/VehiclesSection";
+import { VehicleHistory } from "./components/dashboard/cards/VehicleHistory";
+import { VehiclesList } from "./components/dashboard/cards/VehiclesList";
+import { DevicesSection } from "./components/dashboard/sections/DevicesSection";
+import { DeviceList } from "./components/dashboard/cards/DeviceList";
+import { DeviceRequestForm } from "./components/dashboard/forms/accounts/DeviceRequestForm";
+import { PlansSection } from "./components/dashboard/sections/PlansSection";
+
+import { FinancialsPage } from "./components/dashboard/pages/FinancialsPage";
+// import { ServiceRequestPage } from "./layouts/accounts/ServiceRequestPage";
+
+import { TollsPage } from "./components/dashboard/pages/TollsPage";
+import { TollList } from "./components/dashboard/cards/TollList";
+import { InvoiceList } from "./components/dashboard/cards/InvoiceList";
+import { ViolationsList } from "./components/dashboard/cards/ViolationsList";
 
 /* ADMIN DASHBOARD */
-import AdminDashboard from "./layouts/admin/AdminDashboard";
-import AdminEmployeeSearch from "./components/dashboard/forms/admin/AdminEmployeeSearch";
-import EmployeeSearchResults from "./components/dashboard/admin/EmployeeSearchResults";
-import AccountDetailsLower from "./components/dashboard/forms/accounts/AccountDetailsLower";
+import { AdminSearchForm } from "./components/dashboard/forms/admin/AdminSearchForm";
+import { EmployeeManagementForm } from "./components/dashboard/forms/admin/EmployeeManagementForm";
+import { TollDetailsSection } from "./components/dashboard/sections/TollDetailsSection";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route element={<MainLayout />}>
-					<Route index element={<LoginForm />} />
+				<Route path="/" element={<AppLayout />}>
+					<Route index element={<LoginPage />} />
 
-					{/* PROTECTED */}
-					<Route path="dashboard" element={<MainDashboardLayout />}>
-						<Route index element={<DashboardHome />} />
-						<Route path="accounts" element={<AccountDashboard />}>
-							<Route index element={<AccountSearch />} />
-							<Route path="search-results" element={<AccountSearchResults />} />
-							<Route path="info" element={<AccountInfoLayout />}>
-								{/* CREATE SUB NAVBAR COMPONENT FOR EACH LAYOUT */}
-								<Route path="general" element={<AccountDetailsLayout />}>
-									<Route index element={<AccountDetailsLower />} />
+					{/* PROTECTED ROUTES */}
+					<Route element={<Authenticator />}>
+						<Route path="dashboard" element={<MainDashboardLayout />}>
+							<Route index element={<DashboardHomePage />} />
+							<Route path="main" element={<AccountDashboardLayout />}>
+								<Route index element={<AccountSearchForm />} />
+								<Route
+									path="search-results"
+									element={<AccountSearchResultsPage />}
+								/>
+								<Route
+									path="otg-tag-search"
+									element={<h1>OTG Registration Form </h1>}
+								/>
+
+								<Route path="account" element={<AccountInfoPage />}>
+									<Route path="details" element={<AccountDetailsSection />}>
+										<Route index element={<UpdateAccountDetails />} />
+										<Route
+											path="conversion"
+											element={<h1>Account Conversion Form</h1>}
+										/>
+									</Route>
+									<Route path="notes" element={<NotesSection />} />
+									<Route path="contacts" element={<ContactsSection />} />
+									<Route path="address" element={<AddressSection />} />
 									<Route
-										path="conversion"
-										element={<h1>AccountConversionComponent</h1>}
+										path="payment"
+										element={<h1>Payment Details Section</h1>}
 									/>
+
+									<Route path="vehicles" element={<VehiclesSection />}>
+										<Route index element={<VehiclesList />} />
+										<Route path="history" element={<VehicleHistory />} />
+									</Route>
+
+									<Route path="devices" element={<DevicesSection />}>
+										<Route index element={<DeviceList />} />
+										<Route path="request" element={<DeviceRequestForm />} />
+									</Route>
+
+									<Route path="plans" element={<PlansSection />} />
 								</Route>
-								<Route path="notes" element={<AccountNotesLayout />}></Route>
-								<Route path="contacts" element={<AccountContactsLayout />}>
-									<Route index element={<h1>ContactsTable</h1>} />
+
+								<Route path="financials" element={<FinancialsPage />}>
+									{/* STRIPE */}
+									<Route index element={<h1>Account Replenishmment</h1>} />
+									<Route
+										path="payment-history"
+										element={<h1>Payment History</h1>}
+									/>
+									<Route path="refunds" element={<h1>Refunds</h1>} />
 								</Route>
-								<Route path="address" element={<h1>AccountAddressLayout</h1>}>
-									<Route index element={<h1>AddressTable/Form?</h1>} />
-								</Route>
-								{/* STRIPE */}
-								<Route path="payment" element={<h1>AccountPaymentsLayout</h1>}>
-									<Route index element={<h1>PaymentForm</h1>} />
-								</Route>
-								<Route path="vehicles" element={<h1>AccountVehiclesLayout</h1>}>
-									<Route index element={<h1>VehicleForm</h1>} />
-								</Route>
-								<Route path="devices" element={<h1>AccountDevicesLayout</h1>}>
-									<Route index element={<h1>DevicesForm</h1>} />
-								</Route>
-								<Route path="plans" element={<h1>AccountPlansLayout</h1>}>
-									<Route index element={<h1>PlansForm</h1>} />
+
+								<Route
+									path="service-request"
+									element={<h1>Service Request Page </h1>}
+								/>
+
+								<Route path="tolls" element={<TollsPage />}>
+									<Route path="all" element={<TollDetailsSection />}>
+										<Route index element={<TollList />} />
+										<Route path="invoices" element={<InvoiceList />} />
+										<Route path="violations" element={<ViolationsList />} />
+										<Route
+											path="collections"
+											element={<h1>Collections List</h1>}
+										/>
+									</Route>
+									<Route path="pay" element={<h1>Toll Payment Card</h1>} />
+									<Route
+										path="transfer"
+										element={
+											<>
+												<h1>Toll Transfer Form</h1>
+												<h3>
+													Alert and navigate to all tolls if none selected
+												</h3>
+											</>
+										}
+									/>
 								</Route>
 							</Route>
 
-							{/* <Route path="financials" element={<FinancialsLayout />}>
-								<Route
-									path="payment"
-									element={<h1>Account Replenishment</h1>}
-								/>
-							</Route> */}
-
-							{/* <Route path="service-requests" element={<ServiceRequestLayout />}></Route> */}
-
-							{/* <Route path="otg" element={<OTGRegistrationForm />}></Route> */}
-							{/* <Route path="invoices" element={<TollInvoiceLayout />}>
-								<Route index element={<h1>InvoiceList</h1>} />
-								<Route path="payment" element={<h1>InvoicePayment</h1>} />
-							</Route> */}
-
-							{/* <Route path="violations" element={<ViolationsLayout />}>
-								<Route index element={<h1>ViolationsList</h1>} />
-								<Route path="payment" element={<h1>ViolationsPayment</h1>} />
-								<Route path="dispute" element={<h1>ViolationsDispute</h1>} />
-							</Route> */}
-
-							{/* <Route path="history" element={<TollHistoryLayout />}>
-								<Route index element={<h1>TollList</h1>} />
-								<Route path="dispute" element={<h1>TollDispute</h1>} />
-								<Route path="repost" element={<h1>TollRepostForm</h1>} />
-							</Route> */}
-						</Route>
-						<Route path="admin" element={<AdminDashboard />}>
-							<Route index element={<AdminEmployeeSearch />} />
-							{/* ADD SEARCH PARAMS + DASHBOARD ROUTES */}
-							<Route
-								path="employee-results"
-								element={<EmployeeSearchResults />}
-							/>
-							<Route
-								path="account-results"
-								element={<AccountSearchResults />}
-							/>
+							{/* ADMIN ONLY ROUTES */}
+							<Route element={<AdminAuthenticator />}>
+								<Route path="admin" element={<AdminDashboardLayout />}>
+									<Route index element={<AdminSearchForm />} />
+									<Route
+										path="employee-management"
+										element={<EmployeeManagementForm />}
+									/>
+									<Route
+										path="service-request"
+										element={<h1>Update Service Request Form</h1>}
+									/>
+									<Route
+										path="toll-dispute"
+										element={<h1>Search/Update Toll Dispute</h1>}
+									/>
+									<Route
+										path="violation-dispute"
+										element={<h1>Search/Update Violation Dispute</h1>}
+									/>
+								</Route>
+							</Route>
 						</Route>
 					</Route>
 					<Route path="*" element={<NotFound />} />

@@ -1,7 +1,7 @@
-import React from "react";
-
-const LoginButton = () => {
-	return <button className="login">Login</button>;
+export const LoginButton = ({ onClick, children }) => {
+	return (
+		<button className="btn__login" tabIndex={1} onClick={onClick}>
+			{children}
+		</button>
+	);
 };
-
-export default LoginButton;

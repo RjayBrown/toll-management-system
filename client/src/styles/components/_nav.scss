@@ -1,15 +1,17 @@
 .nav,
 .subnav {
 	&__primary {
-		display: block;
-		margin: 0.4rem 0;
+		justify-content: start;
+		align-items: stretch;
+		margin: 0;
 
 		& a {
 			background-color: var(--primary-blue);
 			color: var(--primary-light);
 			margin: 0 1px 0 0;
-			padding: 0.5rem 1rem;
+			padding: 0.35rem 1rem;
 			border-radius: 0;
+			border-bottom: 1px solid transparent;
 
 			&:hover {
 				background-color: var(--primary-light);
@@ -79,7 +81,7 @@
 		margin: 1rem 0 0 0.125rem;
 
 		& a {
-			padding: 0.25rem 1rem;
+			padding: 0.125rem 1rem;
 
 			&.selected {
 				font-weight: normal;

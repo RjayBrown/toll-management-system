@@ -1,4 +1,4 @@
-@use "../utils/mixins" as u;
+@use "../util/mixins" as u;
 
 form {
 	& span {
@@ -36,7 +36,6 @@ form {
 			&.status {
 				border: none;
 				font-weight: bold;
-				color: green;
 
 				&:hover {
 					box-shadow: none;
@@ -73,12 +72,13 @@ form {
 				width: 6.25rem;
 				margin-right: 1rem;
 			}
-		}
 
-		&__header {
-			margin: 0 1.25rem;
-			& input {
-				height: auto;
+			& .error {
+				background-color: rgb(204, 0, 0);
+				padding: 0rem 0.5rem;
+				font-weight: bold;
+				margin: 0;
+				border-radius: 2px;
 			}
 		}
 
@@ -129,6 +129,9 @@ form {
 			& textarea {
 				height: 5rem;
 				margin-top: 0.5rem;
+				resize: vertical;
+				overflow: hidden;
+				line-height: 1.25rem;
 				&:hover {
 					box-shadow: none;
 				}

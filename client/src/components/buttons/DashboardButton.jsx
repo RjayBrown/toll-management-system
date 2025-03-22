@@ -1,7 +1,7 @@
-import React from "react";
-
-const DashboardButton = () => {
-	return <button>DashboardButton</button>;
+export const DashboardButton = ({ onClick, children }) => {
+	return (
+		<button className="btn__dashboard" onClick={onClick}>
+			{children}
+		</button>
+	);
 };
-
-export default DashboardButton;

@@ -2,11 +2,10 @@ import Account from "../models/Account.js";
 
 export const accountController = {
 	getAccounts: async (req, res) => {
-		// console.log(req.body);
+		console.log(req.body);
 		try {
 			const data = await Account.find(req.body);
-			// const data = await Account.find({ [filter]: value }); to switch from POST to GET request
-			// console.log("Found Drivers");
+			// const data = await Account.find({ [filter]: value }); --- switch from POST to GET request (?)
 			// console.log(data);
 			return res.status(200).json({ success: true, accounts: data });
 		} catch (error) {

@@ -1,56 +1,52 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AccountInfoNavbar = ({ account }) => {
-	// console.log(account);
-
+export const AccountInfoNavbar = ({ isDefaultPath }) => {
 	return (
 		<nav className="flex__row subnav__primary">
 			<NavLink
-				to={`general?accountNumber=${account.accountNumber}`}
+				to={isDefaultPath ? "." : "details"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Details
 			</NavLink>
 			<NavLink
-				to={`notes?accountNumber=${account.accountNumber}`}
-				end
-				className={({ isActive }) => (isActive ? "selected" : null)}
-			>
-				Notes
-			</NavLink>
-			<NavLink
-				to={`contacts?accountNumber=${account.accountNumber}`}
+				to={"contacts"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Contacts
 			</NavLink>
 			<NavLink
-				to={`address?accountNumber=${account.accountNumber}`}
+				to={"address"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Addresses
 			</NavLink>
 			<NavLink
-				to={`payment?accountNumber=${account.accountNumber}`}
+				to={"notes"}
+				className={({ isActive }) => (isActive ? "selected" : null)}
+			>
+				Notes
+			</NavLink>
+			<NavLink
+				to={"payment"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Payment Info
 			</NavLink>
 			<NavLink
-				to={`vehicles?accountNumber=${account.accountNumber}`}
+				to={"vehicles"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Vehicles
 			</NavLink>
 			<NavLink
-				to={`devices?accountNumber=${account.accountNumber}`}
+				to={"devices"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Devices
 			</NavLink>
 			<NavLink
-				to={`plans?accountNumber=${account.accountNumber}`}
+				to={"plans"}
 				className={({ isActive }) => (isActive ? "selected" : null)}
 			>
 				Plans
@@ -58,5 +54,3 @@ const AccountInfoNavbar = ({ account }) => {
 		</nav>
 	);
 };
-
-export default AccountInfoNavbar;
