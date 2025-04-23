@@ -1,20 +1,40 @@
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { AddNoteForm } from "../forms/accounts/AddNoteForm";
 import { Table } from "../cards/Table";
+import { UpdateForm } from "../../forms/UpdateForm";
 
 export const NotesSection = () => {
 	const context = useOutletContext();
-	const table = "notes";
+	const [updateForm, setUpdateForm] = useState({
+		type: null,
+		show: false,
+	});
+	const [selectedRow, setSelectedRow] = useState(0);
+
 	const search = context.currentAccount.notes;
-	const [showForm, setShowForm] = useState(false);
-	// console.log(search);
+	const subDoc = "notes";
 
 	return (
 		<>
-			{showForm ? <AddNoteForm /> : null}
-			<Table table={table} search={search} setShowForm={setShowForm} />
+			{updateForm.show ? (
+				<UpdateForm
+					subDoc={subDoc}
+					search={search}
+					updateForm={updateForm}
+					setUpdateForm={setUpdateForm}
+				/>
+			) : null}
+			<Table
+				table={subDoc}
+				search={search}
+				formState={{
+					selectedRow,
+					setSelectedRow,
+					updateForm,
+					setUpdateForm,
+				}}
+			/>
 		</>
 	);
 };

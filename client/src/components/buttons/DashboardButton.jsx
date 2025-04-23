@@ -1,6 +1,6 @@
-export const DashboardButton = ({ onClick, children }) => {
+export const DashboardButton = ({ onClick, children, className, disabled }) => {
 	return (
-		<button className="btn__dashboard" onClick={onClick}>
+		<button className={className} onClick={onClick} disabled={disabled}>
 			{children}
 		</button>
 	);

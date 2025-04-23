@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { format } from "../../../../util/format";
+import { format } from "../../util/format";
 
 import { IoMdStar } from "react-icons/io";
-import { SideNavButton } from "../../../buttons/SideNavButton";
+import { SideNavButton } from "../buttons/SideNavButton";
 
 export const ReadOnlyAccountDetails = ({ account }) => {
 	const navigate = useNavigate();
@@ -160,21 +160,6 @@ export const ReadOnlyAccountDetails = ({ account }) => {
 						readOnly={true}
 					/>
 				</label>
-				<label className="flex__row" htmlFor="serviceRequests">
-					<span># of Open SR:</span>
-					<input
-						type="text"
-						className="small"
-						name="serviceRequests"
-						value={
-							account
-								? account.serviceRequest.filter((sr) => sr.status === "Open")
-										.length
-								: ""
-						}
-						readOnly={true}
-					/>
-				</label>
 			</form>
 			<form className="flex__col form__readonly">
 				<label className="flex__row" htmlFor="accountBalance">
@@ -224,22 +209,6 @@ export const ReadOnlyAccountDetails = ({ account }) => {
 						className="small"
 						name="billOverpayment"
 						value={format.currency(account ? account.billOverpayment : 0)}
-						readOnly={true}
-					/>
-				</label>
-				<label className="flex__row" htmlFor="deviceDeposit">
-					<span>Device Dep:</span>
-					<input
-						type="text"
-						className="small"
-						name="deviceDeposit"
-						value={format.currency(
-							account
-								? account.devices.every((device) => device.deposit === 16)
-									? 16
-									: 22
-								: 0
-						)}
 						readOnly={true}
 					/>
 				</label>
@@ -318,6 +287,21 @@ export const ReadOnlyAccountDetails = ({ account }) => {
 						className="med"
 						name="accountOpenDate"
 						value={account ? format.date(account.accountOpenDate) : ""}
+						readOnly={true}
+					/>
+				</label>
+				<label className="flex__row" htmlFor="serviceRequests">
+					<span># of Open SR:</span>
+					<input
+						type="text"
+						className="med"
+						name="serviceRequests"
+						value={
+							account
+								? account.serviceRequest.filter((sr) => sr.status === "Open")
+										.length
+								: ""
+						}
 						readOnly={true}
 					/>
 				</label>

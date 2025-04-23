@@ -1,0 +1,177 @@
+export const tableConfig = {
+	contacts: {
+		title: "Contacts",
+		details: [
+			{ label: "Title", type: "text", data: "title" },
+			{ label: "Last Name", type: "text", data: "lastName", locked: true },
+			{ label: "First Name", type: "text", data: "firstName", locked: true },
+			{ label: "MI", type: "text", data: "middleInitial" },
+			{ label: "Primary Phone", type: "phone", data: "primaryPhone" },
+			{ label: "Cell Phone", type: "phone", data: "cellPhone" },
+			{ label: "Primary", type: "checkbox", data: "primary" },
+		],
+		permissions: {
+			canAdd: true,
+			canModify: true,
+			canDelete: true,
+		},
+	},
+	address: {
+		title: "Address",
+		details: [
+			{
+				label: "Address Type",
+				type: "text",
+				options: ["-- Address Type --", "MAILING", "REG"],
+				data: "addressType",
+			},
+			{ label: "Address Line 1", type: "text", data: "addressLine1" },
+			{ label: "Address Line 2", type: "text", data: "addressLine2" },
+			{ label: "City", type: "text", data: "city" },
+			{ label: "State", type: "text", data: "state" },
+			{ label: "Zip Code", type: "text", data: "zip" },
+			{ label: "Province", type: "text", data: "province" },
+			{ label: "Postal Code", type: "text", data: "postalCode" },
+			{
+				label: "Country",
+				type: "text",
+				options: ["-- Country --", "US", "CAN"],
+				data: "country",
+			},
+		],
+		permissions: {
+			canAdd: true,
+			canModify: true,
+			canDelete: true,
+		},
+	},
+	notes: {
+		title: "Notes",
+		details: [
+			{ label: "Note Type", type: "text", data: "type" },
+			{ label: "Note Sub-Type", type: "text", data: "subType" },
+			{
+				label: "Date Created",
+				type: "date",
+				data: "dateCreated",
+				locked: true,
+			},
+			{ label: "Created By", type: "text", data: "createdBy", locked: true },
+			{ label: "Description", type: "text", data: "description", locked: true },
+		],
+		permissions: {
+			canAdd: true,
+			canModify: false,
+			canDelete: false,
+		},
+	},
+	vehicles: {
+		title: "Vehicles",
+		details: [
+			{ label: "Vehicle Type", type: "text", data: "type" },
+			{
+				label: "License Plate",
+				type: "text",
+				data: "licensePlate",
+				locked: true,
+			},
+			{ label: "State", type: "text", data: "state", locked: true },
+			{ label: "Year", type: "text", data: "year" },
+			{ label: "Make", type: "text", data: "make" },
+			{ label: "Model", type: "text", data: "model" },
+			{ label: "Resident Plan", type: "text", data: "residentPlan" },
+			{ label: "Susp Status", type: "checkbox", data: "suspended" },
+			{ label: "Date Added", type: "date", data: "dateAdded" },
+			{ label: "Current Vehicle", type: "checkbox", data: "current" },
+		],
+		permissions: {
+			canAdd: true,
+			canModify: true,
+			canDelete: true,
+		},
+	},
+	devices: {
+		title: "Devices",
+		details: [
+			{
+				label: "Device Number",
+				type: "text",
+				data: "deviceNumber",
+				locked: true,
+			},
+			{ label: "Device Status", type: "text", data: "status", locked: true },
+			{ label: "Device Type", type: "text", data: "type", locked: true },
+			{
+				label: "Activation Date",
+				type: "date",
+				data: "activationDate",
+				locked: true,
+			},
+			{ label: "Deposit", type: "number", data: "deposit", locked: true },
+		],
+		permissions: {
+			canAdd: true,
+			canModify: false,
+			canDelete: false,
+		},
+	},
+	plans: {
+		title: "Plans",
+		details: [
+			{ label: "Plan Name", type: "text", data: "planName" },
+			{ label: "Plan Description", type: "text", data: "planDescription" },
+			{ label: "Plan Status", type: "text", data: "planStatus" },
+			{ label: "Assigned Device", type: "text", data: "deviceNumber" },
+			{ label: "Start Date", type: "date", data: "startDate" },
+			{ label: "End Date", type: "date", data: "endDate" },
+		],
+		permissions: {
+			canAdd: true,
+			canModify: false,
+			canDelete: true,
+		},
+	},
+
+	tolls: {
+		title: "Tolls",
+		details: [
+			{ label: "Plate #", type: "text", data: "licensePlate" },
+			{
+				label: "Violation Number",
+				type: "text",
+				data: "violationNumber",
+				locked: true,
+			},
+			{
+				label: "Invoice Number",
+				type: "text",
+				data: "invoiceNumber",
+				locked: true,
+			},
+			{
+				label: "Transaction Date",
+				type: "date",
+				data: "transactionDate",
+				locked: true,
+			},
+			{ label: "Mail Date", type: "date", data: "postedDate", locked: true },
+			{
+				label: "Violation Date",
+				type: "date",
+				data: "violationDate",
+				locked: true,
+			},
+			{ label: "Amount Payable", type: "text", data: "amountPayable" },
+			{ label: "Toll Due", type: "text", data: "tollAmount" },
+			{ label: "Fee Due", type: "text", data: "violationFee" },
+			{ label: "Amount Paid", type: "text", data: "amountPaid" },
+			{ label: "Toll Status", type: "text", data: "tollStatus" },
+			{ label: "Disputed", type: "checkbox", data: "disputed" },
+		],
+		permissions: {
+			canAdd: false,
+			canModify: false,
+			canDelete: false,
+		},
+	},
+};

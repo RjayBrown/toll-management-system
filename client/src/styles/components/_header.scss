@@ -23,6 +23,10 @@
 		& .icon {
 			cursor: pointer;
 			font-size: 1.25rem;
+
+			&__user {
+				color: rgb(203, 152, 57);
+			}
 		}
 
 		& span {

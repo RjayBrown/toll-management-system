@@ -2,18 +2,40 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import { Table } from "./Table";
-import { UpdateVehiclesForm } from "../forms/accounts/UpdateVehiclesForm";
+import { UpdateForm } from "../../forms/UpdateForm";
 
 export const VehiclesList = () => {
 	const context = useOutletContext();
+	const [updateForm, setUpdateForm] = useState({
+		type: null,
+		show: false,
+	});
+	const [selectedRow, setSelectedRow] = useState(0);
+
 	const search = context.currentAccount.vehicles;
-	const table = "vehicles";
-	const [showForm, setShowForm] = useState(false);
+	const subDoc = "vehicles";
 
 	return (
 		<>
-			<Table table={table} search={search} setShowForm={setShowForm} />
-			{showForm ? <UpdateVehiclesForm /> : null}
+			<Table
+				table={subDoc}
+				search={search}
+				formState={{
+					selectedRow,
+					setSelectedRow,
+					updateForm,
+					setUpdateForm,
+				}}
+			/>
+			{updateForm.show ? (
+				<UpdateForm
+					selectedRow={selectedRow}
+					search={search}
+					subDoc={subDoc}
+					updateForm={updateForm}
+					setUpdateForm={setUpdateForm}
+				/>
+			) : null}
 		</>
 	);
 };

@@ -49,7 +49,7 @@ app.use(passport.session());
 
 app.use("/auth", authRoutes);
 app.use("/api/employee", employeeRoutes);
-app.use("/api/accounts", accountRoutes);
+app.use("/api/account", accountRoutes);
 
 /* DEVELOPMENT CONFIGURATION */
 const PORT = process.env.PORT || 8000;

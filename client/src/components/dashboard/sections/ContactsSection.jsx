@@ -2,19 +2,42 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import { Table } from "../cards/Table";
-import { UpdateContactsForm } from "../forms/accounts/UpdateContactsForm";
+import { UpdateForm } from "../../forms/UpdateForm";
 
 export const ContactsSection = () => {
 	const context = useOutletContext();
-	const table = "contacts";
+	const [updateForm, setUpdateForm] = useState({
+		type: null,
+		show: false,
+	});
+	const [selectedRow, setSelectedRow] = useState(0);
+
 	const search = context.currentAccount.demographics.contacts;
-	const [showForm, setShowForm] = useState(false);
-	// console.log(search);
+	const subDoc = "demographics";
+	const nestedSubDoc = "contacts";
 
 	return (
 		<>
-			<Table table={table} search={search} setShowForm={setShowForm} />
-			{showForm ? <UpdateContactsForm /> : null}
+			<Table
+				table={nestedSubDoc}
+				search={search}
+				formState={{
+					selectedRow,
+					setSelectedRow,
+					updateForm,
+					setUpdateForm,
+				}}
+			/>
+			{updateForm.show ? (
+				<UpdateForm
+					selectedRow={selectedRow}
+					search={search}
+					subDoc={subDoc}
+					nestedSubDoc={nestedSubDoc}
+					updateForm={updateForm}
+					setUpdateForm={setUpdateForm}
+				/>
+			) : null}
 		</>
 	);
 };

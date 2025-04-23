@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useFocusInput } from "../../../hooks/useFocusInput";
 import { Navigate, useOutletContext } from "react-router-dom";
+import { useFocusInput } from "../../hooks/useFocusInput";
 
-import { fetchData } from "../../../util/api";
+import { fetchData } from "../../util/fetch";
 
-import { LoginButton } from "../../buttons/LoginButton";
+import { LoginButton } from "../buttons/LoginButton";
 
 /**
  * Contains a form to send login request to the server. Uses the result to update application state for logged in status and current user.
@@ -39,7 +39,7 @@ export const LoginPage = () => {
 		const employeeID = loginFormData.employeeID;
 		const password = loginFormData.password;
 
-		const login = await fetchData.logInUser(employeeID, password);
+		const login = await fetchData.logIn(employeeID, password);
 
 		if (login.success) {
 			context.setIsLoggedIn(true);

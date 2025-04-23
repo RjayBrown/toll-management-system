@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { useFocusInput } from "../../../../hooks/useFocusInput";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { useFocusInput } from "../../hooks/useFocusInput";
 
-import { DashboardButton } from "../../../buttons/DashboardButton";
+import { DashboardButton } from "../buttons/DashboardButton";
+import { fetchData } from "../../util/fetch";
+import { Loading } from "../global/Loading";
 
 export const AccountSearchForm = () => {
+	const context = useOutletContext();
+	const navigate = useNavigate();
 	const [accountFormData, setAccountFormData] = useState({
 		accountNumber: "",
 		licensePlate: "",
 		lastName: "",
 		firstName: "",
-		phoneNumber: "",
+		primaryPhone: "",
 		deviceNumber: "",
 		violationNumber: "",
 		invoiceNumber: "",
@@ -27,25 +32,60 @@ export const AccountSearchForm = () => {
 		});
 	};
 
+	// Fetch data to use when rendering search results page
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const fields = Object.keys(accountFormData);
-		const filter = [];
-		fields.forEach((field) => {
+		const formFields = Object.keys(accountFormData);
+		const searchFilter = {};
+		formFields.forEach((field) => {
 			if (accountFormData[field]) {
-				filter.push({
-					// converting values to correct type for search filter
-					[field]: Number.isNaN(+accountFormData[field])
-						? accountFormData[field]
-						: +accountFormData[field],
-				});
+				if (field === "accountNumber") {
+					searchFilter[field] = accountFormData[field];
+				} else if (field === "licensePlate") {
+					searchFilter[`vehicles.${field}`] =
+						accountFormData[field].toUpperCase();
+				} else if (field === "deviceNumber") {
+					searchFilter[`devices.${field}`] = accountFormData[field];
+				} else if (field === "invoiceNumber" || field === "violationNumber") {
+					searchFilter[`tolls.${field}`] = accountFormData[field];
+				} else if (
+					field === "lastName" ||
+					field === "firstName" ||
+					field === "primaryPhone"
+				) {
+					searchFilter[`demographics.${field}`] =
+						accountFormData[field].toUpperCase();
+				}
 			}
 		});
 
-		// TODO: Query db for matching accounts using filter
-		console.log(filter);
+		const getMatchingAccounts = async () => {
+			context.setIsLoading(true);
+			const response = await fetchData.search("account", searchFilter);
+
+			context.setAccounts(response.accounts);
+			context.setIsLoading(false);
+
+			navigate("search-results");
+		};
+
+		console.log(searchFilter);
+		const queryHasFilter = Object.keys(searchFilter).length ? true : false;
+
+		if (queryHasFilter) {
+			getMatchingAccounts();
+			// console.log(context);
+		} else {
+			(() => {
+				context.setAccounts(null);
+				navigate("search-results");
+				// console.log(context);
+			})();
+		}
 	};
-	return (
+	return context.isLoading ? (
+		<Loading />
+	) : (
 		<form
 			onSubmit={handleSubmit}
 			className="flex__col form__search card__shadow"
@@ -89,13 +129,13 @@ export const AccountSearchForm = () => {
 					onChange={handleChange}
 				/>
 			</label>
-			<label htmlFor="phoneNumber">
+			<label htmlFor="primaryPhone">
 				<span>Day Phone:</span>
 				<input
-					type="phone"
-					name="phoneNumber"
+					type="text"
+					name="primaryPhone"
 					pattern="[0-9]{10}"
-					value={accountFormData.phoneNumber}
+					value={accountFormData.primaryPhone}
 					onChange={handleChange}
 				/>
 			</label>
@@ -104,6 +144,7 @@ export const AccountSearchForm = () => {
 				<input
 					type="text"
 					name="deviceNumber"
+					pattern="[0-9]{11}"
 					value={accountFormData.deviceNumber}
 					onChange={handleChange}
 				/>
@@ -113,6 +154,7 @@ export const AccountSearchForm = () => {
 				<input
 					type="text"
 					name="violationNumber"
+					pattern="T[0-9]{12}"
 					value={accountFormData.violationNumber}
 					onChange={handleChange}
 				/>
@@ -122,11 +164,12 @@ export const AccountSearchForm = () => {
 				<input
 					type="text"
 					name="invoiceNumber"
+					pattern="[0-9]{11}"
 					value={accountFormData.invoiceNumber}
 					onChange={handleChange}
 				/>
 			</label>
-			<DashboardButton>Go</DashboardButton>
+			<DashboardButton className="btn__dashboard">Go</DashboardButton>
 		</form>
 	);
 };

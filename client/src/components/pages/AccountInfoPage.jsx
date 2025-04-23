@@ -1,10 +1,10 @@
-import { useValidateLocation } from "../../../hooks/useValidateLocation";
 import { Outlet, useOutletContext, Navigate } from "react-router-dom";
+import { useValidateLocation } from "../../hooks/useValidateLocation";
 
-import { ReadOnlyAccountDetails } from "../forms/accounts/ReadOnlyAccountDetails";
-import { AccountInfoNavbar } from "../../navigation/accounts/AccountInfoNavbar";
-import { UpdateAccountDetails } from "../forms/accounts/UpdateAccountDetails";
-import { AccountInfoSubNavbar } from "../../navigation/accounts/AccountInfoSubNavbar";
+import { ReadOnlyAccountDetails } from "../forms/ReadOnlyAccountDetails";
+import { AccountInfoNavbar } from "../navigation/accounts/AccountInfoNavbar";
+import { AccountDetailsForm } from "../forms/AccountDetailsForm";
+import { AccountInfoSubNavbar } from "../navigation/accounts/AccountInfoSubNavbar";
 
 export const AccountInfoPage = () => {
 	const context = useOutletContext();
@@ -19,7 +19,7 @@ export const AccountInfoPage = () => {
 			{isDefaultPath ? (
 				<>
 					<AccountInfoSubNavbar isDefaultPath={isDefaultPath} />
-					<UpdateAccountDetails />
+					<AccountDetailsForm />
 				</>
 			) : (
 				<Outlet context={context} />

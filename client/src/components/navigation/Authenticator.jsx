@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet, useOutletContext } from "react-router-dom";
-import { fetchData } from "../../util/api";
+import { fetchData } from "../../util/fetch";
 
 import { Loading } from "../global/Loading";
 
@@ -18,7 +18,7 @@ export const Authenticator = () => {
 
 	useEffect(() => {
 		const checkIsLoggedIn = async () => {
-			const auth = await fetchData.authenticateUser();
+			const auth = await fetchData.authenticate();
 			if (auth.success) {
 				context.setIsLoggedIn(true);
 				context.setUser({

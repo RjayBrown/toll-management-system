@@ -1,22 +1,5 @@
 export const fetchData = {
-	async authenticateUser() {
-		const myHeaders = new Headers();
-		myHeaders.append("Content-Type", "application/json");
-		const url = "http://localhost:8000/auth/";
-
-		try {
-			const res = await fetch(url, {
-				method: "GET",
-				credentials: "include",
-				headers: myHeaders,
-			});
-			const authenticatedUser = await res.json();
-			return authenticatedUser;
-		} catch (error) {
-			console.log(error);
-		}
-	},
-	async logInUser(employeeID, password) {
+	async logIn(employeeID, password) {
 		const myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
 		const url = "http://localhost:8000/auth/login";
@@ -34,7 +17,24 @@ export const fetchData = {
 			console.log(error);
 		}
 	},
-	async logOutUser() {
+	async authenticate() {
+		const myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+		const url = "http://localhost:8000/auth/";
+
+		try {
+			const res = await fetch(url, {
+				method: "GET",
+				credentials: "include",
+				headers: myHeaders,
+			});
+			const authenticatedUser = await res.json();
+			return authenticatedUser;
+		} catch (error) {
+			console.log(error);
+		}
+	},
+	async logOut() {
 		const url = "http://localhost:8000/auth/logout";
 
 		try {
@@ -51,10 +51,10 @@ export const fetchData = {
 			console.log(error);
 		}
 	},
-	async accounts(filter = null) {
+	async search(query, filter = null) {
 		const myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
-		const url = `http://localhost:8000/api/accounts/search`;
+		const url = `http://localhost:8000/api/${query}/search`;
 		// console.log(filter, value);
 		try {
 			const res = await fetch(url, {
@@ -69,15 +69,33 @@ export const fetchData = {
 		}
 	},
 
-	async employees() {
+	async update(query, filter = null) {
 		const myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
-		const url = "http://localhost:8000/api/employees/search";
+		const url = `http://localhost:8000/api/${query}/update`;
+		// console.log(filter, value);
+		try {
+			const res = await fetch(url, {
+				method: "PUT",
+				body: JSON.stringify(filter),
+				headers: myHeaders,
+			});
+			const data = await res.json();
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
+	},
 
+	async create(query, filter = null) {
+		const myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+		const url = `http://localhost:8000/api/${query}/create`;
+		// console.log(filter, value);
 		try {
 			const res = await fetch(url, {
 				method: "POST",
-				body: JSON.stringify({ [filter]: value }),
+				body: JSON.stringify(filter),
 				headers: myHeaders,
 			});
 			const data = await res.json();

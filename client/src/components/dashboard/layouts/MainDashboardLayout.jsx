@@ -12,12 +12,24 @@ import { MainDashboardNavbar } from "../../navigation/MainDashboardNavbar";
 
 export const MainDashboardLayout = () => {
 	const context = useOutletContext();
+	const [accounts, setAccounts] = useState(null);
 	const [currentAccount, setCurrentAccount] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	return (
 		<>
 			<MainDashboardNavbar />
-			<Outlet context={{ ...context, currentAccount, setCurrentAccount }} />
+			<Outlet
+				context={{
+					...context,
+					currentAccount,
+					setCurrentAccount,
+					accounts,
+					setAccounts,
+					isLoading,
+					setIsLoading,
+				}}
+			/>
 		</>
 	);
 };

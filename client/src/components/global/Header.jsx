@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { fetchData } from "../../util/api";
+import { fetchData } from "../../util/fetch";
 
 import { SiToll } from "react-icons/si";
 import { MdDriveEta } from "react-icons/md";
@@ -20,7 +20,7 @@ export const Header = ({ state, user }) => {
 	const navigate = useNavigate();
 
 	const handleLogout = async () => {
-		const isLoggedOut = await fetchData.logOutUser();
+		const isLoggedOut = await fetchData.logOut();
 		if (isLoggedOut.success) {
 			state.setIsLoggedIn(false);
 			navigate("login");
@@ -47,11 +47,11 @@ export const Header = ({ state, user }) => {
 						</form>
 						<LogOutButton onClick={() => handleLogout()}>Log Out</LogOutButton>
 						<Link to="dashboard" className="header__link">
-							<FaUser className="icon" />
+							<FaUser className="icon icon__user" />
 							{user ? (
-								<h5 className="id">{`${user.isAdmin ? "Admin" : "Employee"} ${
-									user.id
-								}`}</h5>
+								<h6 className="id">{`${user.id} ${
+									user.isAdmin ? "(ADMIN)" : "(NON-ADMIN)"
+								}`}</h6>
 							) : null}
 						</Link>
 					</>

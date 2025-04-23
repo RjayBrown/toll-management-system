@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useFocusInput } from "../../../../hooks/useFocusInput";
+import { useFocusInput } from "../../hooks/useFocusInput";
 
-import { DashboardButton } from "../../../buttons/DashboardButton";
+import { DashboardButton } from "../buttons/DashboardButton";
 
 export const AdminSearchForm = () => {
 	const [adminFormData, setAdminFormData] = useState({
@@ -75,7 +75,7 @@ export const AdminSearchForm = () => {
 					onChange={handleChange}
 				/>
 			</label>
-			<DashboardButton>Go</DashboardButton>
+			<DashboardButton className={"btn__dashboard"}>Go</DashboardButton>
 		</form>
 	);
 };

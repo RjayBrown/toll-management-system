@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { DashboardHomePage } from "./components/dashboard/pages/DashboardHomePage";
+import { DashboardHomePage } from "./components/pages/DashboardHomePage";
 import { NotFound } from "./components/global/NotFound";
 
 /* AUTH/ROUTE PROTECTION */
-import { LoginPage } from "./components/dashboard/pages/LoginPage";
+import { LoginPage } from "./components/pages/LoginPage";
 import { Authenticator } from "./components/navigation/Authenticator";
 import { AdminAuthenticator } from "./components/navigation/AdminAuthenticator";
 
@@ -15,13 +15,13 @@ import { AccountDashboardLayout } from "./components/dashboard/layouts/AccountDa
 import { AdminDashboardLayout } from "./components/dashboard/layouts/AdminDashboardLayout";
 
 /* MAIN DASHBOARD */
-import { AccountSearchForm } from "./components/dashboard/forms/accounts/AccountSearchForm";
-import { AccountSearchResultsPage } from "./components/dashboard/pages/AccountSearchResultsPage";
+import { AccountSearchForm } from "./components/forms/AccountSearchForm";
+import { AccountSearchResultsPage } from "./components/pages/AccountSearchResultsPage";
 // import { OTGRegistrationForm } from "./components/dashboard/forms/accounts/OTGRegistrationForm";
 
-import { AccountInfoPage } from "./components/dashboard/pages/AccountInfoPage";
+import { AccountInfoPage } from "./components/pages/AccountInfoPage";
 import { AccountDetailsSection } from "./components/dashboard/sections/AccountDetailsSection";
-import { UpdateAccountDetails } from "./components/dashboard/forms/accounts/UpdateAccountDetails";
+import { AccountDetailsForm } from "./components/forms/AccountDetailsForm";
 import { NotesSection } from "./components/dashboard/sections/NotesSection";
 import { ContactsSection } from "./components/dashboard/sections/ContactsSection";
 import { AddressSection } from "./components/dashboard/sections/AddressSection";
@@ -31,21 +31,22 @@ import { VehicleHistory } from "./components/dashboard/cards/VehicleHistory";
 import { VehiclesList } from "./components/dashboard/cards/VehiclesList";
 import { DevicesSection } from "./components/dashboard/sections/DevicesSection";
 import { DeviceList } from "./components/dashboard/cards/DeviceList";
-import { DeviceRequestForm } from "./components/dashboard/forms/accounts/DeviceRequestForm";
+import { DeviceRequestForm } from "./components/forms/DeviceRequestForm";
 import { PlansSection } from "./components/dashboard/sections/PlansSection";
 
-import { FinancialsPage } from "./components/dashboard/pages/FinancialsPage";
+import { FinancialsPage } from "./components/pages/FinancialsPage";
 // import { ServiceRequestPage } from "./layouts/accounts/ServiceRequestPage";
 
-import { TollsPage } from "./components/dashboard/pages/TollsPage";
-import { TollList } from "./components/dashboard/cards/TollList";
-import { InvoiceList } from "./components/dashboard/cards/InvoiceList";
-import { ViolationsList } from "./components/dashboard/cards/ViolationsList";
+import { TollsPage } from "./components/pages/TollsPage";
+import { TollList } from "./components/pages/TollsPage";
+import { InvoiceList } from "./components/pages/TollsPage";
+import { ViolationsList } from "./components/pages/TollsPage";
 
 /* ADMIN DASHBOARD */
-import { AdminSearchForm } from "./components/dashboard/forms/admin/AdminSearchForm";
-import { EmployeeManagementForm } from "./components/dashboard/forms/admin/EmployeeManagementForm";
+import { AdminSearchForm } from "./components/forms/AdminSearchForm";
+import { EmployeeManagementForm } from "./components/forms/EmployeeManagementForm";
 import { TollDetailsSection } from "./components/dashboard/sections/TollDetailsSection";
+import { TollTransferForm } from "./components/forms/TollTransferForm";
 
 function App() {
 	return (
@@ -71,7 +72,7 @@ function App() {
 
 								<Route path="account" element={<AccountInfoPage />}>
 									<Route path="details" element={<AccountDetailsSection />}>
-										<Route index element={<UpdateAccountDetails />} />
+										<Route index element={<AccountDetailsForm />} />
 										<Route
 											path="conversion"
 											element={<h1>Account Conversion Form</h1>}
@@ -115,26 +116,22 @@ function App() {
 
 								<Route path="tolls" element={<TollsPage />}>
 									<Route path="all" element={<TollDetailsSection />}>
-										<Route index element={<TollList />} />
-										<Route path="invoices" element={<InvoiceList />} />
-										<Route path="violations" element={<ViolationsList />} />
+										<Route index element={<TollList listType={"all"} />} />
+										<Route
+											path="invoices"
+											element={<TollList listType={"invoices"} />}
+										/>
+										<Route
+											path="violations"
+											element={<TollList listType={"violations"} />}
+										/>
 										<Route
 											path="collections"
 											element={<h1>Collections List</h1>}
 										/>
 									</Route>
 									<Route path="pay" element={<h1>Toll Payment Card</h1>} />
-									<Route
-										path="transfer"
-										element={
-											<>
-												<h1>Toll Transfer Form</h1>
-												<h3>
-													Alert and navigate to all tolls if none selected
-												</h3>
-											</>
-										}
-									/>
+									<Route path="transfer" element={<TollTransferForm />} />
 								</Route>
 							</Route>
 

@@ -1,4 +1,9 @@
 // BUTTON GROUPS
+button {
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+}
+
 .btn {
 	&__login {
 		padding: 0.25rem 0.5rem;
@@ -85,6 +90,39 @@
 		&:active {
 			transform: scale(0.975);
 			border: 3px solid var(--primary-dark);
+		}
+
+		&.close {
+			background-color: var(--warning);
+			border: 3px solid var(--warning);
+
+			&:hover {
+				background-color: var(--warning-light);
+				border: 3px solid var(--warning-light);
+			}
+		}
+
+		&[disabled] {
+			cursor: not-allowed;
+			background-color: grey;
+			border: 3px solid grey;
+			color: lightgray;
+
+			&:hover {
+				background-color: grey;
+				border: 3px solid grey;
+			}
+
+			&:active {
+				transform: none;
+			}
+		}
+
+		&.selected {
+			cursor: initial;
+			background-color: var(--rich-blue);
+			border: 3px solid var(--primary-dark);
+			color: var(--primary-light);
 		}
 	}
 }

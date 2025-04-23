@@ -23,6 +23,11 @@
 	}
 
 	&__details {
+		& .top {
+			justify-content: flex-start;
+			width: 100%;
+		}
+
 		& .title {
 			padding: 0.5rem;
 			width: 100%;
@@ -31,6 +36,8 @@
 
 		& .form-table {
 			width: 100%;
+			padding: 0;
+			border: none;
 
 			& .heading {
 				font-weight: normal;

@@ -1,61 +1,17 @@
-import { useEffect, useState } from "react";
 import { NavLink, useOutletContext } from "react-router-dom";
-import { fetchData } from "../../../util/api";
-import { format } from "../../../util/format";
+import { useHighlightRows } from "../../hooks/useHighlightRows";
 
-import { Loading } from "../../global/Loading";
-import { ReadOnlyAccountDetails } from "../forms/accounts/ReadOnlyAccountDetails";
+import { format } from "../../util/format";
+
+import { Loading } from "../global/Loading";
+import { ReadOnlyAccountDetails } from "../forms/ReadOnlyAccountDetails";
 
 export const AccountSearchResultsPage = () => {
 	const context = useOutletContext();
-	const [accounts, setAccounts] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		const getMatchingAccounts = async () => {
-			const response = await fetchData.accounts({
-				accountNumber: 28439234,
-			});
-			setAccounts(response.accounts);
-			setIsLoading(false);
-		};
+	useHighlightRows(".table-row", context.isLoading);
 
-		getMatchingAccounts();
-	}, []);
-
-	useEffect(() => {
-		const accountRows = document.querySelectorAll(".table-row");
-		const toggleHighlight = (rowElement, arrayOfRowElements) => {
-			if (rowElement && !rowElement.classList.contains("selected")) {
-				rowElement.classList.add("selected");
-			}
-
-			arrayOfRowElements.forEach((row) => {
-				if (row !== rowElement) {
-					row.classList.remove("selected");
-				}
-			});
-		};
-
-		const addHighlightOnClick = (arrayOfTableRows) => {
-			arrayOfTableRows.forEach((row) => {
-				row.addEventListener("click", () =>
-					toggleHighlight(row, arrayOfTableRows)
-				);
-			});
-		};
-		addHighlightOnClick(accountRows);
-
-		return () => {
-			accountRows.forEach((rowElement) =>
-				rowElement.removeEventListener("click", () =>
-					toggleHighlight(row, arrayOfTableRows)
-				)
-			);
-		};
-	}, [isLoading]);
-
-	return isLoading ? (
+	return context.isLoading ? (
 		<Loading />
 	) : (
 		<>
@@ -64,6 +20,7 @@ export const AccountSearchResultsPage = () => {
 					<caption
 						onClick={() => {
 							context.setCurrentAccount(null);
+							context.setAccounts(null);
 						}}
 					>
 						Account Search Results
@@ -83,8 +40,8 @@ export const AccountSearchResultsPage = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{accounts
-							? accounts.map((account, i) => {
+						{context.accounts
+							? context.accounts.map((account, i) => {
 									return (
 										<tr
 											key={account.accountNumber}
@@ -112,13 +69,13 @@ export const AccountSearchResultsPage = () => {
 												{format.phoneNumber(account.demographics.primaryPhone)}
 											</td>
 											<td>
-												{`${account.demographics.address.addressLine1.toUpperCase()}`}
+												{`${account.demographics.address[0].addressLine1.toUpperCase()}`}
 											</td>
 											<td>
-												{`${account.demographics.address.city.toUpperCase()}`}
+												{`${account.demographics.address[0].city.toUpperCase()}`}
 											</td>
 											<td>
-												{`${account.demographics.address.state.toUpperCase()}`}
+												{`${account.demographics.address[0].state.toUpperCase()}`}
 											</td>
 											<td>
 												<input

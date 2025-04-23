@@ -5,8 +5,7 @@ export const accountController = {
 		console.log(req.body);
 		try {
 			const data = await Account.find(req.body);
-			// const data = await Account.find({ [filter]: value }); --- switch from POST to GET request (?)
-			// console.log(data);
+
 			return res.status(200).json({ success: true, accounts: data });
 		} catch (error) {
 			console.log("Failed to get account data"), error.message;
@@ -37,11 +36,16 @@ export const accountController = {
 		}
 	},
 	updateAccountInfo: async (req, res) => {
-		//  make update and validation dynamic and optimize (one call instead of 2?)
-		const id = { accountNumber: req.body.accountNumber };
-		const data = req.body;
+		const id = req.body.id;
+		const subDoc = req.body.subDoc;
+		const nestedSubDoc = req.body.nestedSubDoc;
+		const index = req.body.index;
+		const keys = req.body.keys;
+		const data = req.body.data;
+		const user = req.body.user;
+		const push = req.body.push;
 
-		console.log(id);
+		console.log(req.body);
 
 		if (!id) {
 			console.log("Invalid id: Account not found");
@@ -50,19 +54,75 @@ export const accountController = {
 				.json({ success: false, message: "Invalid id: Account not found" });
 		}
 
-		try {
-			const updatedAccount = await Account.findOneAndUpdate(id, data, {
-				new: true,
-			});
-			console.log("Updated account");
-			return res.status(200).json({ success: true, account: updatedAccount });
-		} catch (error) {
-			console.log("Failed to update account", error.message);
-			return res
-				.status(500)
-				.json({ success: false, message: `Server/Internal error ${error}` });
+		let account = await Account.findOne(id);
+
+		if (push) {
+			// Push new data to any subdocument array
+			try {
+				if (nestedSubDoc) {
+					account[`${subDoc}`][`${nestedSubDoc}`][
+						account[`${subDoc}`][`${nestedSubDoc}`].length
+					] = data;
+				}
+
+				if (subDoc) {
+					if (subDoc === "notes") {
+						data.createdBy = user;
+						account[`${subDoc}`][account[`${subDoc}`].length] = data;
+					} else {
+						account[`${subDoc}`][account[`${subDoc}`].length] = data;
+					}
+				}
+
+				account.save();
+
+				console.log(data);
+				console.log(`Added new record for ${subDoc}`);
+
+				return res.status(200).json({ success: true, account: account });
+			} catch (error) {
+				console.log("Failed to add record", error.message);
+
+				return res.status(500).json({
+					success: false,
+					message: `Server/Internal error ${error}`,
+				});
+			}
+		} else {
+			try {
+				// Update existing data
+				keys.forEach((key) => {
+					if (nestedSubDoc) {
+						account[`${subDoc}`][`${nestedSubDoc}`][index][`${key}`] =
+							data[`${key}`];
+					}
+
+					if (subDoc) {
+						account[`${subDoc}`].length
+							? (account[`${subDoc}`][index][`${key}`] = data[`${key}`])
+							: (account[`${subDoc}`][`${key}`] = data[`${key}`]);
+					} else {
+						account[`${key}`] = data[`${key}`];
+					}
+				});
+
+				account.save();
+
+				console.log(data);
+				console.log("Updated account");
+
+				return res.status(200).json({ success: true, account: account });
+			} catch (error) {
+				console.log("Failed to add record", error.message);
+
+				return res.status(500).json({
+					success: false,
+					message: `Server/Internal error ${error}`,
+				});
+			}
 		}
 	},
+
 	deleteAccount: async (req, res) => {
 		const id = { accountNumber: req.body.accountNumber };
 

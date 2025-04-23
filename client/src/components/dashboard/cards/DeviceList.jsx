@@ -1,20 +1,34 @@
 import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { Table } from "./Table";
-import { UpdateDevicesForm } from "../forms/accounts/UpdateDevicesForm";
 
 export const DeviceList = () => {
 	const context = useOutletContext();
+	const navigate = useNavigate();
+	const [updateForm, setUpdateForm] = useState({
+		type: null,
+		show: false,
+	});
+	const [selectedRow, setSelectedRow] = useState(0);
+
 	const search = context.currentAccount.devices;
-	const table = "devices";
-	const [showForm, setShowForm] = useState(false);
-	// console.log(search);
+	const subDoc = "devices";
 
 	return (
 		<>
-			<Table table={table} search={search} setShowForm={setShowForm} />
-			{showForm ? <UpdateDevicesForm /> : null}
+			<div className="card">
+				<Table
+					table={subDoc}
+					search={search}
+					formState={{
+						selectedRow,
+						setSelectedRow,
+						updateForm,
+						setUpdateForm,
+					}}
+				/>
+			</div>
 		</>
 	);
 };

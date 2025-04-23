@@ -4,7 +4,6 @@ import { DevicesSubNavbar } from "../../navigation/accounts/DevicesSubNavbar";
 
 export const DevicesSection = () => {
 	const context = useOutletContext();
-	console.log(context);
 
 	return (
 		<>
